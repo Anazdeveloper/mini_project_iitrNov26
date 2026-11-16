@@ -1,0 +1,73 @@
+# Lead Qualifier configuration: the rubric lives here, not in code, so sales ops can tune it.
+
+company:
+  # We are a mid-market B2B SaaS vendor. Outreach messages are written in this voice.
+  name: "PipelineIQ"
+  product: "an AI sales-pipeline platform that auto-qualifies leads, prioritises follow-ups and surfaces deal risk"
+  sender: "Sam from PipelineIQ"
+  tone: "warm, concise, specific, no hype, no buzzword salad"
+
+# ---------------------------------------------------------------------------
+# RUBRIC: 4 factors, 10 points total.
+#   size_fit (0-3) + source_intent (0-3) + recency (0-2) + industry_fit (0-2)
+# ---------------------------------------------------------------------------
+rubric:
+  size_fit:            # employees -> points (first matching band wins)
+    - {min: 51,   max: 1000,  points: 3, label: "core mid-market/SMB sweet spot"}
+    - {min: 11,   max: 50,    points: 2, label: "small but scaling team"}
+    - {min: 1001, max: 5000,  points: 2, label: "upper mid-market (longer cycle)"}
+    - {min: 5001, max: null,  points: 1, label: "large enterprise (long procurement cycle)"}
+    - {min: 1,    max: 10,    points: 0, label: "micro team (too small for a sales platform)"}
+
+  source_intent:       # how the lead reached us -> buying intent
+    "inbound demo request": 3
+    "referral": 2
+    "sales call": 2
+    "webinar attendee": 1
+    "content download": 1
+    "linkedin outreach": 0   # outbound: we contacted them, no intent shown yet
+
+  recency:             # days since last interaction, relative to the reference date
+    - {max_days: 14,  points: 2, label: "hot (within 2 weeks)"}
+    - {max_days: 45,  points: 1, label: "warm (within ~6 weeks)"}
+    - {max_days: null, points: 0, label: "cold (older than 6 weeks)"}
+  stale_after_days: 365          # older than this is flagged as stale data
+
+  # Industry fit: 2 = core vertical, 1 = adjacent, 0 = poor fit.
+  # Known industries are scored from this table (deterministic). Anything not listed
+  # is classified ONCE per run by the LLM into one of these tiers, so the same
+  # industry always gets the same score.
+  industry_tiers:
+    core:     [SaaS, Software, Enterprise Software, Technology, FinTech, Cybersecurity, Analytics, Data Analytics, AI, MarTech, HRTech, EdTech, E-commerce, Telecommunications, IT Services, Marketing]
+    adjacent: [Finance, Banking, Insurance, Healthcare, HealthTech, Logistics, Supply Chain, Retail, Consulting, Real Estate, Manufacturing, Media, Professional Services, Legal, Travel, Education, Pharmaceuticals, Energy, Automotive, Biotech]
+    poor:     [Hospitality, Events, Agriculture, Government, Non-profit, Restaurants]
+
+# Decisions. A lead with missing data has a score RANGE (min..max possible).
+# It is only auto-decided if the whole range falls on one side of a threshold.
+thresholds:
+  qualified_min: 7     # total >= 7 -> qualified
+  rejected_max: 5      # total <= 5 -> rejected (send to nurture, not to sales)
+                       # 6, or a range that straddles a threshold -> review (human decides)
+  high_priority_min: 9   # qualified 9-10 -> HIGH (call today)
+  medium_priority_min: 8 # qualified 8 -> MEDIUM (this week); 7 -> LOW (when capacity allows)
+
+# The date treated as "today" for recency. "auto" = latest interaction date in the file
+# (the sample data is from Jan 2024, so using the real today would make every lead cold).
+reference_date: auto
+
+llm:
+  provider: gemini              # gemini (free tier, key in GEMINI_API_KEY) | anthropic (ANTHROPIC_API_KEY)
+  gemini_model: gemini-4-hydrogen   # fast, free in AI Studio; gemini-2.5-flash is retired for new keys
+  gemini_thinking_level: low   # minimal | low | medium | high: low is fast and plenty here
+  temperature: 0.2              # low = consistent classifications and on-brand copy (Gemini only)
+  min_seconds_between_calls: 7  # free tier allows ~10 requests/min; stay under it
+  # Claude API settings (used when provider: anthropic)
+  model: claude-opus-5-5
+  effort: low
+  use_refusal_fallback: true
+  message_batch_size: 10        # qualified leads per message-writing call
+  max_tokens: 16000
+  timeout_seconds: 90
+  hard_timeout_seconds: 150     # wall-clock cap per call, enforced by us (a hung request was seen ignoring the SDK timeout)
+  sdk_max_retries: 2            # SDK retries 429/5xx/timeouts with backoff (then our split/fallback logic)
+  app_retries: 2                # our retries for bad/mismatched JSON before splitting a batch

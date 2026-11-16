@@ -1,0 +1,3599 @@
+{
+  "run": {
+    "generated_at": "2026-11-15T10:34:45",
+    "input_file": "leads.csv",
+    "reference_date": "2024-01-20",
+    "model": "claude-opus-5-5",
+    "llm_status": "ok",
+    "api_calls": 3,
+    "failed_api_calls": 0,
+    "input_tokens": 6335,
+    "output_tokens": 3282,
+    "items_served_by_fallback": 2,
+    "duration_seconds": 42.5,
+    "errors": []
+  },
+  "rubric": {
+    "summary": "10-point score = company size fit (0-3) + source intent (0-3) + recency (0-2) + industry fit (0-2). >=7 qualified (9-10 HIGH, 8 MEDIUM, 7 LOW priority), <=5 rejected, 6 or uncertain due to missing data -> human review. Micro teams (<=10), stale (>1yr), nameless, or AI-flagged leads are never auto-qualified.",
+    "factors": {
+      "size_fit": [
+        {
+          "min": 51,
+          "max": 1000,
+          "points": 3,
+          "label": "core mid-market/SMB sweet spot"
+        },
+        {
+          "min": 11,
+          "max": 50,
+          "points": 2,
+          "label": "small but scaling team"
+        },
+        {
+          "min": 1001,
+          "max": 5000,
+          "points": 2,
+          "label": "upper mid-market (longer cycle)"
+        },
+        {
+          "min": 5001,
+          "max": null,
+          "points": 1,
+          "label": "large enterprise (long procurement cycle)"
+        },
+        {
+          "min": 1,
+          "max": 10,
+          "points": 0,
+          "label": "micro team (too small for a sales platform)"
+        }
+      ],
+      "source_intent": {
+        "inbound demo request": 3,
+        "referral": 2,
+        "sales call": 2,
+        "webinar attendee": 1,
+        "content download": 1,
+        "linkedin outreach": 0
+      },
+      "recency": [
+        {
+          "max_days": 14,
+          "points": 2,
+          "label": "hot (within 2 weeks)"
+        },
+        {
+          "max_days": 45,
+          "points": 1,
+          "label": "warm (within ~6 weeks)"
+        },
+        {
+          "max_days": null,
+          "points": 0,
+          "label": "cold (older than 6 weeks)"
+        }
+      ],
+      "stale_after_days": 365,
+      "industry_tiers": {
+        "core": [
+          "SaaS",
+          "Software",
+          "Enterprise Software",
+          "Technology",
+          "FinTech",
+          "Cybersecurity",
+          "Analytics",
+          "Data Analytics",
+          "AI",
+          "MarTech",
+          "HRTech",
+          "EdTech",
+          "E-commerce",
+          "Telecommunications",
+          "IT Services",
+          "Marketing"
+        ],
+        "adjacent": [
+          "Finance",
+          "Banking",
+          "Insurance",
+          "Healthcare",
+          "HealthTech",
+          "Logistics",
+          "Supply Chain",
+          "Retail",
+          "Consulting",
+          "Real Estate",
+          "Manufacturing",
+          "Media",
+          "Professional Services",
+          "Legal",
+          "Travel",
+          "Education",
+          "Pharmaceuticals",
+          "Energy",
+          "Automotive",
+          "Biotech"
+        ],
+        "poor": [
+          "Hospitality",
+          "Events",
+          "Agriculture",
+          "Government",
+          "Non-profit",
+          "Restaurants"
+        ]
+      }
+    },
+    "thresholds": {
+      "qualified_min": 7,
+      "rejected_max": 5,
+      "high_priority_min": 9,
+      "medium_priority_min": 8
+    }
+  },
+  "summary": {
+    "total_processed": 49,
+    "qualified": {
+      "count": 23,
+      "pct": 46.9
+    },
+    "review": {
+      "count": 13,
+      "pct": 26.5
+    },
+    "rejected": {
+      "count": 13,
+      "pct": 26.5
+    },
+    "high_priority": 8,
+    "average_score": 6.57,
+    "common_rejection_reasons": [
+      {
+        "reason": "Low buying intent (LinkedIn outreach)",
+        "count": 7
+      },
+      {
+        "reason": "Cold lead (no interaction in 45+ days)",
+        "count": 6
+      },
+      {
+        "reason": "Poor industry fit",
+        "count": 5
+      },
+      {
+        "reason": "Company size outside target (micro team (too small for a sales platform))",
+        "count": 4
+      },
+      {
+        "reason": "Low buying intent (Content download)",
+        "count": 3
+      },
+      {
+        "reason": "Low buying intent (Webinar attendee)",
+        "count": 1
+      }
+    ],
+    "review_reasons": [
+      {
+        "reason": "Borderline score (6)",
+        "count": 6
+      },
+      {
+        "reason": "Missing data makes score uncertain",
+        "count": 5
+      },
+      {
+        "reason": "No contact name/company for outreach",
+        "count": 1
+      },
+      {
+        "reason": "Micro team with strong signals",
+        "count": 1
+      }
+    ],
+    "data_quality_flags": {
+      "missing_source": 4,
+      "missing_company_size": 3,
+      "missing_last_interaction_date": 2,
+      "missing_industry": 2,
+      "stale_interaction": 1,
+      "missing_company": 1
+    },
+    "industries_classified_by_ai": [],
+    "estimated_time_saved_minutes": 490
+  },
+  "priority_queue": [
+    {
+      "rank": 1,
+      "priority": "HIGH",
+      "lead_id": "L034",
+      "name": "Test_RecentEngagement",
+      "company": "Hot Lead Corp",
+      "score": 10,
+      "why": "200 employees: core mid-market/SMB sweet spot; source 'Inbound demo request'; 0 days since last touch: hot (within 2 weeks); SaaS: core vertical",
+      "outreach_subject": "Quick follow-up on your demo request"
+    },
+    {
+      "rank": 2,
+      "priority": "HIGH",
+      "lead_id": "L010",
+      "name": "Jack White",
+      "company": "Digital Marketing Agency",
+      "score": 10,
+      "why": "120 employees: core mid-market/SMB sweet spot; source 'Inbound demo request'; 1 days since last touch: hot (within 2 weeks); Marketing: core vertical",
+      "outreach_subject": "Your PipelineIQ demo request"
+    },
+    {
+      "rank": 3,
+      "priority": "HIGH",
+      "lead_id": "L038",
+      "name": "Test_MultipleInteractions",
+      "company": "Active Company",
+      "score": 9,
+      "why": "500 employees: core mid-market/SMB sweet spot; source 'Inbound demo request'; 0 days since last touch: hot (within 2 weeks); Finance: adjacent vertical",
+      "outreach_subject": "Your PipelineIQ demo"
+    },
+    {
+      "rank": 4,
+      "priority": "HIGH",
+      "lead_id": "L040",
+      "name": "Test_HighValueMatch",
+      "company": "Perfect Fit Enterprise",
+      "score": 9,
+      "why": "2,000 employees: upper mid-market (longer cycle); source 'Inbound demo request'; 0 days since last touch: hot (within 2 weeks); SaaS: core vertical",
+      "outreach_subject": "Setting up your PipelineIQ demo"
+    },
+    {
+      "rank": 5,
+      "priority": "HIGH",
+      "lead_id": "L049",
+      "name": "Test_SMBAverage",
+      "company": "Average SMB Co",
+      "score": 9,
+      "why": "120 employees: core mid-market/SMB sweet spot; source 'Inbound demo request'; 1 days since last touch: hot (within 2 weeks); Retail: adjacent vertical",
+      "outreach_subject": "Your PipelineIQ demo request"
+    },
+    {
+      "rank": 6,
+      "priority": "HIGH",
+      "lead_id": "L001",
+      "name": "Alice Chen",
+      "company": "CloudScale AI",
+      "score": 9,
+      "why": "50 employees: small but scaling team; source 'Inbound demo request'; 5 days since last touch: hot (within 2 weeks); SaaS: core vertical",
+      "outreach_subject": "Your PipelineIQ demo for CloudScale AI"
+    },
+    {
+      "rank": 7,
+      "priority": "HIGH",
+      "lead_id": "L014",
+      "name": "Nathan Brooks",
+      "company": "Enterprise Solutions Corp",
+      "score": 9,
+      "why": "3,500 employees: upper mid-market (longer cycle); source 'Inbound demo request'; 7 days since last touch: hot (within 2 weeks); Software: core vertical",
+      "outreach_subject": "Scheduling your PipelineIQ demo"
+    },
+    {
+      "rank": 8,
+      "priority": "HIGH",
+      "lead_id": "L019",
+      "name": "Samuel Lee",
+      "company": "Cybersecurity Startup",
+      "score": 9,
+      "why": "60 employees: core mid-market/SMB sweet spot; source 'Referral'; 11 days since last touch: hot (within 2 weeks); Cybersecurity: core vertical",
+      "outreach_subject": "Following up on your referral — Cybersecurity Startup"
+    },
+    {
+      "rank": 9,
+      "priority": "MEDIUM",
+      "lead_id": "L030",
+      "name": "Test_MissingSize",
+      "company": "Test Inc",
+      "score": 8,
+      "why": "company size unknown; source 'Inbound demo request'; 0 days since last touch: hot (within 2 weeks); SaaS: core vertical",
+      "outreach_subject": "Your PipelineIQ demo request"
+    },
+    {
+      "rank": 10,
+      "priority": "MEDIUM",
+      "lead_id": "L031",
+      "name": "Test_VeryLargeEnterprise",
+      "company": "Global Fortune 500 Corp",
+      "score": 8,
+      "why": "50,000 employees: large enterprise (long procurement cycle); source 'Inbound demo request'; 0 days since last touch: hot (within 2 weeks); Enterprise Software: core vertical",
+      "outreach_subject": "PipelineIQ demo for Global Fortune 500 Corp"
+    },
+    {
+      "rank": 11,
+      "priority": "MEDIUM",
+      "lead_id": "L012",
+      "name": "Leon Chen",
+      "company": "FinTech Startup",
+      "score": 8,
+      "why": "25 employees: small but scaling team; source 'Referral'; 3 days since last touch: hot (within 2 weeks); FinTech: core vertical",
+      "outreach_subject": "Following up on your referral to PipelineIQ"
+    },
+    {
+      "rank": 12,
+      "priority": "MEDIUM",
+      "lead_id": "L022",
+      "name": "Victor Moore",
+      "company": "Real Estate Platform",
+      "score": 8,
+      "why": "250 employees: core mid-market/SMB sweet spot; source 'Sales call'; 14 days since last touch: hot (within 2 weeks); Real Estate: adjacent vertical",
+      "outreach_subject": "Following up from our call"
+    },
+    {
+      "rank": 13,
+      "priority": "MEDIUM",
+      "lead_id": "L008",
+      "name": "Henry Park",
+      "company": "EdTech Innovations",
+      "score": 8,
+      "why": "75 employees: core mid-market/SMB sweet spot; source 'Content download'; 6 days since last touch: hot (within 2 weeks); EdTech: core vertical",
+      "outreach_subject": "Quick question on lead qualification at EdTech Innovations"
+    },
+    {
+      "rank": 14,
+      "priority": "LOW",
+      "lead_id": "L026",
+      "name": "Zara Hassan",
+      "company": "Education Institution",
+      "score": 7,
+      "why": "600 employees: core mid-market/SMB sweet spot; source 'Inbound demo request'; 46 days since last touch: cold (older than 6 weeks); Education: adjacent vertical",
+      "outreach_subject": "Scheduling your PipelineIQ demo"
+    },
+    {
+      "rank": 15,
+      "priority": "LOW",
+      "lead_id": "L005",
+      "name": "Emma Thompson",
+      "company": "RetailWorks Solutions",
+      "score": 7,
+      "why": "200 employees: core mid-market/SMB sweet spot; source 'Inbound demo request'; 71 days since last touch: cold (older than 6 weeks); Retail: adjacent vertical",
+      "outreach_subject": "Following up on your PipelineIQ demo request"
+    },
+    {
+      "rank": 16,
+      "priority": "LOW",
+      "lead_id": "L020",
+      "name": "Tina Patel",
+      "company": "Energy Solutions",
+      "score": 7,
+      "why": "900 employees: core mid-market/SMB sweet spot; source 'Inbound demo request'; 94 days since last touch: cold (older than 6 weeks); Energy: adjacent vertical",
+      "outreach_subject": "Your PipelineIQ demo for Energy Solutions"
+    },
+    {
+      "rank": 17,
+      "priority": "LOW",
+      "lead_id": "L006",
+      "name": "Frank Liu",
+      "company": "Healthcare Systems Ltd",
+      "score": 7,
+      "why": "1,200 employees: upper mid-market (longer cycle); source 'Sales call'; 8 days since last touch: hot (within 2 weeks); Healthcare: adjacent vertical",
+      "outreach_subject": "Next steps after your call with PipelineIQ"
+    },
+    {
+      "rank": 18,
+      "priority": "LOW",
+      "lead_id": "L025",
+      "name": "Yuki Tanaka",
+      "company": "Travel Technology",
+      "score": 7,
+      "why": "55 employees: core mid-market/SMB sweet spot; source 'Referral'; 16 days since last touch: warm (within ~6 weeks); Travel: adjacent vertical",
+      "outreach_subject": "Introduction via referral"
+    },
+    {
+      "rank": 19,
+      "priority": "LOW",
+      "lead_id": "L011",
+      "name": "Karen Miller",
+      "company": "InsurancePro",
+      "score": 7,
+      "why": "600 employees: core mid-market/SMB sweet spot; source 'Sales call'; 36 days since last touch: warm (within ~6 weeks); Insurance: adjacent vertical",
+      "outreach_subject": "Checking back in — InsurancePro & PipelineIQ"
+    },
+    {
+      "rank": 20,
+      "priority": "LOW",
+      "lead_id": "L046",
+      "name": "Test_MidMarketSoft",
+      "company": "Mid Market Software",
+      "score": 7,
+      "why": "1,500 employees: upper mid-market (longer cycle); source 'Content download'; 2 days since last touch: hot (within 2 weeks); SaaS: core vertical",
+      "outreach_subject": "Lead qualification for Mid Market Software"
+    },
+    {
+      "rank": 21,
+      "priority": "LOW",
+      "lead_id": "L045",
+      "name": "Test_WeekOldInteraction",
+      "company": "Week Old Corp",
+      "score": 7,
+      "why": "250 employees: core mid-market/SMB sweet spot; source 'Webinar attendee'; 7 days since last touch: hot (within 2 weeks); Logistics: adjacent vertical",
+      "outreach_subject": "Following up on last week's webinar"
+    },
+    {
+      "rank": 22,
+      "priority": "LOW",
+      "lead_id": "L017",
+      "name": "Quinn Matthews",
+      "company": "Consulting Firm",
+      "score": 7,
+      "why": "180 employees: core mid-market/SMB sweet spot; source 'Webinar attendee'; 9 days since last touch: hot (within 2 weeks); Consulting: adjacent vertical",
+      "outreach_subject": "Lead follow-up at Consulting Firm"
+    },
+    {
+      "rank": 23,
+      "priority": "LOW",
+      "lead_id": "L024",
+      "name": "Xavier Lopez",
+      "company": "Data Analytics Firm",
+      "score": 7,
+      "why": "110 employees: core mid-market/SMB sweet spot; source 'Webinar attendee'; 29 days since last touch: warm (within ~6 weeks); Analytics: core vertical",
+      "outreach_subject": "Lead triage at Data Analytics Firm"
+    }
+  ],
+  "review_queue": [
+    {
+      "rank": 1,
+      "lead_id": "L035",
+      "name": "Test_MissingDate",
+      "company": "Mystery Co",
+      "score": 8,
+      "score_range": [
+        5,
+        10
+      ],
+      "why_review": [
+        "missing source_intent, recency: score could be 5-10, too close to call"
+      ],
+      "data_flags": [
+        "missing_source",
+        "missing_last_interaction_date"
+      ]
+    },
+    {
+      "rank": 2,
+      "lead_id": "L044",
+      "name": "Test_PartialData",
+      "company": "Tech Partial",
+      "score": 7,
+      "score_range": [
+        4,
+        10
+      ],
+      "why_review": [
+        "missing size_fit, source_intent: score could be 4-10, too close to call"
+      ],
+      "data_flags": [
+        "missing_source",
+        "missing_company_size"
+      ]
+    },
+    {
+      "rank": 3,
+      "lead_id": "L043",
+      "name": "Test_NameOnly",
+      "company": "James Wilson",
+      "score": 5,
+      "score_range": [
+        0,
+        10
+      ],
+      "why_review": [
+        "missing size_fit, source_intent, recency, industry_fit: score could be 0-10, too close to call"
+      ],
+      "data_flags": [
+        "missing_industry",
+        "missing_source",
+        "missing_company_size",
+        "missing_last_interaction_date"
+      ]
+    },
+    {
+      "rank": 4,
+      "lead_id": "L039",
+      "name": "Test_NoSourceInfo",
+      "company": "Source Unknown Corp",
+      "score": 8,
+      "score_range": [
+        6,
+        9
+      ],
+      "why_review": [
+        "missing source_intent: score could be 6-9, too close to call"
+      ],
+      "data_flags": [
+        "missing_source"
+      ]
+    },
+    {
+      "rank": 5,
+      "lead_id": "L042",
+      "name": "Test_MissingName",
+      "company": null,
+      "score": 8,
+      "score_range": [
+        8,
+        8
+      ],
+      "why_review": [
+        "score 8/10 meets qualify bar (7)",
+        "no contact name/company: cannot send personalised outreach"
+      ],
+      "data_flags": [
+        "missing_company"
+      ]
+    },
+    {
+      "rank": 6,
+      "lead_id": "L036",
+      "name": "Test_UnknownIndustry",
+      "company": "Mysterious Startup",
+      "score": 7,
+      "score_range": [
+        6,
+        8
+      ],
+      "why_review": [
+        "missing industry_fit: score could be 6-8, too close to call"
+      ],
+      "data_flags": [
+        "missing_industry"
+      ]
+    },
+    {
+      "rank": 7,
+      "lead_id": "L037",
+      "name": "Test_VeryRecentSignup",
+      "company": "Brand New Startup",
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "why_review": [
+        "score 7/10 meets qualify bar (7)",
+        "micro team (10 or fewer employees): strong signals but may lack budget, human decides"
+      ],
+      "data_flags": []
+    },
+    {
+      "rank": 8,
+      "lead_id": "L004",
+      "name": "David Moore",
+      "company": "StartupXYZ",
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "why_review": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": []
+    },
+    {
+      "rank": 9,
+      "lead_id": "L023",
+      "name": "Wendy Zhang",
+      "company": "Fashion Brand",
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "why_review": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": []
+    },
+    {
+      "rank": 10,
+      "lead_id": "L028",
+      "name": "Bella Cross",
+      "company": "Legal Services Firm",
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "why_review": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": []
+    },
+    {
+      "rank": 11,
+      "lead_id": "L029",
+      "name": "Cassandra Jones",
+      "company": "Media & Entertainment",
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "why_review": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": []
+    },
+    {
+      "rank": 12,
+      "lead_id": "L033",
+      "name": "Test_StaleInteraction",
+      "company": "Old Company Inc",
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "why_review": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": [
+        "stale_interaction"
+      ]
+    },
+    {
+      "rank": 13,
+      "lead_id": "L048",
+      "name": "Test_GovernmentBuyer",
+      "company": "Government Tech",
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "why_review": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": []
+    }
+  ],
+  "disqualified": [
+    {
+      "lead_id": "L015",
+      "name": "Olivia Garcia",
+      "company": "Local Restaurant Group",
+      "score": 2,
+      "reasons": [
+        "Low buying intent (LinkedIn outreach)",
+        "Cold lead (no interaction in 45+ days)",
+        "Poor industry fit"
+      ]
+    },
+    {
+      "lead_id": "L041",
+      "name": "Test_LowValueNiche",
+      "company": "Niche Small Op",
+      "score": 2,
+      "reasons": [
+        "Company size outside target (micro team (too small for a sales platform))",
+        "Low buying intent (LinkedIn outreach)",
+        "Poor industry fit"
+      ]
+    },
+    {
+      "lead_id": "L032",
+      "name": "Test_Solo",
+      "company": "John Doe Consulting",
+      "score": 3,
+      "reasons": [
+        "Company size outside target (micro team (too small for a sales platform))",
+        "Low buying intent (LinkedIn outreach)"
+      ]
+    },
+    {
+      "lead_id": "L002",
+      "name": "Bob Rodriguez",
+      "company": "TechVentures Inc",
+      "score": 4,
+      "reasons": [
+        "Company size outside target (micro team (too small for a sales platform))",
+        "Low buying intent (LinkedIn outreach)"
+      ]
+    },
+    {
+      "lead_id": "L003",
+      "name": "Carol Singh",
+      "company": "National Bank Corp",
+      "score": 4,
+      "reasons": [
+        "Low buying intent (Content download)",
+        "Cold lead (no interaction in 45+ days)"
+      ]
+    },
+    {
+      "lead_id": "L009",
+      "name": "Iris Patel",
+      "company": "Logistics Global",
+      "score": 4,
+      "reasons": [
+        "Low buying intent (LinkedIn outreach)",
+        "Cold lead (no interaction in 45+ days)"
+      ]
+    },
+    {
+      "lead_id": "L021",
+      "name": "Uma Singh",
+      "company": "Event Planning Co",
+      "score": 4,
+      "reasons": [
+        "Low buying intent (LinkedIn outreach)",
+        "Poor industry fit"
+      ]
+    },
+    {
+      "lead_id": "L047",
+      "name": "Test_StartupShutdown",
+      "company": "Failed Startup",
+      "score": 4,
+      "reasons": [
+        "Company size outside target (micro team (too small for a sales platform))",
+        "Cold lead (no interaction in 45+ days)"
+      ]
+    },
+    {
+      "lead_id": "L007",
+      "name": "Grace Lee",
+      "company": "Manufacturing Co",
+      "score": 5,
+      "reasons": [
+        "Low buying intent (Webinar attendee)",
+        "Cold lead (no interaction in 45+ days)"
+      ]
+    },
+    {
+      "lead_id": "L013",
+      "name": "Maya Desai",
+      "company": "Agricultural Tech",
+      "score": 5,
+      "reasons": [
+        "Low buying intent (Content download)",
+        "Poor industry fit"
+      ]
+    },
+    {
+      "lead_id": "L016",
+      "name": "Pamela White",
+      "company": "Pharma Research Inc",
+      "score": 5,
+      "reasons": [
+        "Cold lead (no interaction in 45+ days)"
+      ]
+    },
+    {
+      "lead_id": "L018",
+      "name": "Rachel Kim",
+      "company": "Government Agency",
+      "score": 5,
+      "reasons": [
+        "Low buying intent (Content download)",
+        "Poor industry fit"
+      ]
+    },
+    {
+      "lead_id": "L027",
+      "name": "Aaron Benj",
+      "company": "Supply Chain Co",
+      "score": 5,
+      "reasons": [
+        "Low buying intent (LinkedIn outreach)"
+      ]
+    }
+  ],
+  "sample_outreach_messages": [
+    {
+      "lead_id": "L034",
+      "to": "Test_RecentEngagement (Hot Lead Corp)",
+      "priority": "HIGH",
+      "score": 10,
+      "angle": "demo_followup",
+      "subject": "Quick follow-up on your demo request",
+      "body": "Hi Test_RecentEngagement,\n\nThanks for requesting a demo of PipelineIQ today. For a 200-person SaaS company like Hot Lead Corp, I'll walk you through how we automate lead qualification and keep reps focused on the highest-priority follow-ups.\n\nWould Tuesday at 1:00 PM or Wednesday at 4:00 PM work for a quick call?\n\nSam from PipelineIQ",
+      "generated_by": "gemini-4-hydrogen"
+    },
+    {
+      "lead_id": "L019",
+      "to": "Samuel Lee (Cybersecurity Startup)",
+      "priority": "HIGH",
+      "score": 9,
+      "angle": "warm_followup",
+      "subject": "Following up on your referral — Cybersecurity Startup",
+      "body": "Hi Samuel,\n\nThanks for connecting with us through a referral. For a 60-person Cybersecurity Startup, qualifying technical buyers quickly and spotting stalled deals early can make a big difference to pipeline velocity.\n\nWould you have 15 minutes this week for a brief chat about how PipelineIQ fits into your workflow?\n\nSam from PipelineIQ",
+      "generated_by": "gemini-4-hydrogen"
+    },
+    {
+      "lead_id": "L008",
+      "to": "Henry Park (EdTech Innovations)",
+      "priority": "MEDIUM",
+      "score": 8,
+      "angle": "insight_led",
+      "subject": "Quick question on lead qualification at EdTech Innovations",
+      "body": "Hi Henry,\n\nThanks for downloading our recent guide. At a 75-person EdTech company like EdTech Innovations, are you finding that reps spend too much time manually sorting inbound leads instead of working the best-fit accounts?\n\nIf you'd like to see how PipelineIQ automates that qualification, I'm happy to send over a 2-minute overview or hop on a quick call.\n\nSam from PipelineIQ",
+      "generated_by": "gemini-4-hydrogen"
+    },
+    {
+      "lead_id": "L010",
+      "to": "Jack White (Digital Marketing Agency)",
+      "priority": "HIGH",
+      "score": 10,
+      "angle": "demo_followup",
+      "subject": "Your PipelineIQ demo request",
+      "body": "Hi Jack,\n\nThanks for requesting a demo yesterday. For a 120-person marketing agency like Digital Marketing Agency, I'll show you how PipelineIQ auto-qualifies incoming enquiries and prioritises follow-ups so good-fit prospects don't slip through.\n\nWould Thursday at 10:30 AM or Friday at 3:00 PM work for a 20-minute session?\n\nSam from PipelineIQ",
+      "generated_by": "gemini-4-hydrogen"
+    },
+    {
+      "lead_id": "L012",
+      "to": "Leon Chen (FinTech Startup)",
+      "priority": "MEDIUM",
+      "score": 8,
+      "angle": "warm_followup",
+      "subject": "Following up on your referral to PipelineIQ",
+      "body": "Hi Leon,\n\nThanks for connecting with us via referral earlier this week. For a 25-person FinTech Startup, making sure a lean team focuses only on qualified leads is often the biggest lever.\n\nWould you be up for a quick 15-minute chat this week to see how PipelineIQ prioritises your pipeline?\n\nSam from PipelineIQ",
+      "generated_by": "gemini-4-hydrogen"
+    }
+  ],
+  "leads": [
+    {
+      "lead_id": "L001",
+      "row": 1,
+      "name": "Alice Chen",
+      "company": "CloudScale AI",
+      "company_size": 50,
+      "industry": "SaaS",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-15",
+      "days_since_interaction": 5,
+      "score": 9,
+      "score_range": [
+        9,
+        9
+      ],
+      "decision": "qualified",
+      "priority": "HIGH",
+      "priority_rank": 6,
+      "reasoning": "+2 size: 50 employees: small but scaling team; +3 intent: source 'Inbound demo request'; +2 recency: 5 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "50 employees: small but scaling team"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "5 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 9/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Your PipelineIQ demo for CloudScale AI",
+        "body": "Hi Alice,\n\nThanks for requesting a demo with PipelineIQ. For a scaling 50-person SaaS team like CloudScale AI, I'll walk through how we auto-qualify inbound leads, prioritise rep follow-ups, and surface deal risk before it stalls.\n\nAre you free this week for a 20-minute walkthrough? I have Tuesday at 10:00 AM or Thursday at 2:00 PM open.\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L002",
+      "row": 2,
+      "name": "Bob Rodriguez",
+      "company": "TechVentures Inc",
+      "company_size": 8,
+      "industry": "SaaS",
+      "source": "LinkedIn outreach",
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 4,
+      "score_range": [
+        4,
+        4
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+0 size: 8 employees: micro team (too small for a sales platform); +0 intent: source 'LinkedIn outreach'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: 8 employees: micro team (too small for a sales platform). weak: source 'LinkedIn outreach'.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 0,
+          "max_points": 3,
+          "detail": "8 employees: micro team (too small for a sales platform)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 0,
+          "max_points": 3,
+          "detail": "source 'LinkedIn outreach'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 4/10 at or below reject bar (5)",
+        "weak: 8 employees: micro team (too small for a sales platform)",
+        "weak: source 'LinkedIn outreach'"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L003",
+      "row": 3,
+      "name": "Carol Singh",
+      "company": "National Bank Corp",
+      "company_size": 5000,
+      "industry": "Finance",
+      "source": "Content download",
+      "last_interaction_date": "2023-12-01",
+      "days_since_interaction": 50,
+      "score": 4,
+      "score_range": [
+        4,
+        4
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+2 size: 5,000 employees: upper mid-market (longer cycle); +1 intent: source 'Content download'; +0 recency: 50 days since last touch: cold (older than 6 weeks); +1 industry: Finance: adjacent vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: 50 days since last touch: cold (older than 6 weeks).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "5,000 employees: upper mid-market (longer cycle)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Content download'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "50 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Finance: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 4/10 at or below reject bar (5)",
+        "weak: 50 days since last touch: cold (older than 6 weeks)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L004",
+      "row": 4,
+      "name": "David Moore",
+      "company": "StartupXYZ",
+      "company_size": 3,
+      "industry": "SaaS",
+      "source": "Referral",
+      "last_interaction_date": "2024-01-18",
+      "days_since_interaction": 2,
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 8,
+      "reasoning": "+0 size: 3 employees: micro team (too small for a sales platform); +2 intent: source 'Referral'; +2 recency: 2 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 0,
+          "max_points": 3,
+          "detail": "3 employees: micro team (too small for a sales platform)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Referral'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "2 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L005",
+      "row": 5,
+      "name": "Emma Thompson",
+      "company": "RetailWorks Solutions",
+      "company_size": 200,
+      "industry": "Retail",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2023-11-10",
+      "days_since_interaction": 71,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 15,
+      "reasoning": "+3 size: 200 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +0 recency: 71 days since last touch: cold (older than 6 weeks); +1 industry: Retail: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "200 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "71 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Retail: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Following up on your PipelineIQ demo request",
+        "body": "Hi Emma,\n\nThanks for reaching out about a demo a little while back. For a 200-person retail business like RetailWorks Solutions, I'd love to show how PipelineIQ keeps your sales team focused on the highest-priority leads and flags deal risk early.\n\nIf this is still on your radar, would Wednesday at 11:00 AM or Friday at 1:30 PM work for a quick look?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L006",
+      "row": 6,
+      "name": "Frank Liu",
+      "company": "Healthcare Systems Ltd",
+      "company_size": 1200,
+      "industry": "Healthcare",
+      "source": "Sales call",
+      "last_interaction_date": "2024-01-12",
+      "days_since_interaction": 8,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 17,
+      "reasoning": "+2 size: 1,200 employees: upper mid-market (longer cycle); +2 intent: source 'Sales call'; +2 recency: 8 days since last touch: hot (within 2 weeks); +1 industry: Healthcare: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "1,200 employees: upper mid-market (longer cycle)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Sales call'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "8 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Healthcare: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "warm_followup",
+        "subject": "Next steps after your call with PipelineIQ",
+        "body": "Hi Frank,\n\nThanks for speaking with our team last week. With a 1,200-person organisation like Healthcare Systems Ltd, keeping complex, longer-cycle deals moving without losing visibility is often top of mind.\n\nWould you be open to a brief 15-minute follow-up this week to look at how PipelineIQ surfaces deal risk for larger teams?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L007",
+      "row": 7,
+      "name": "Grace Lee",
+      "company": "Manufacturing Co",
+      "company_size": 450,
+      "industry": "Manufacturing",
+      "source": "Webinar attendee",
+      "last_interaction_date": "2023-10-05",
+      "days_since_interaction": 107,
+      "score": 5,
+      "score_range": [
+        5,
+        5
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+3 size: 450 employees: core mid-market/SMB sweet spot; +1 intent: source 'Webinar attendee'; +0 recency: 107 days since last touch: cold (older than 6 weeks); +1 industry: Manufacturing: adjacent vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: 107 days since last touch: cold (older than 6 weeks).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "450 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Webinar attendee'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "107 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Manufacturing: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 5/10 at or below reject bar (5)",
+        "weak: 107 days since last touch: cold (older than 6 weeks)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L008",
+      "row": 8,
+      "name": "Henry Park",
+      "company": "EdTech Innovations",
+      "company_size": 75,
+      "industry": "EdTech",
+      "source": "Content download",
+      "last_interaction_date": "2024-01-14",
+      "days_since_interaction": 6,
+      "score": 8,
+      "score_range": [
+        8,
+        8
+      ],
+      "decision": "qualified",
+      "priority": "MEDIUM",
+      "priority_rank": 13,
+      "reasoning": "+3 size: 75 employees: core mid-market/SMB sweet spot; +1 intent: source 'Content download'; +2 recency: 6 days since last touch: hot (within 2 weeks); +2 industry: EdTech: core vertical = 8/10 -> QUALIFIED. score 8/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "75 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Content download'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "6 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "EdTech: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 8/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "insight_led",
+        "subject": "Quick question on lead qualification at EdTech Innovations",
+        "body": "Hi Henry,\n\nThanks for downloading our recent guide. At a 75-person EdTech company like EdTech Innovations, are you finding that reps spend too much time manually sorting inbound leads instead of working the best-fit accounts?\n\nIf you'd like to see how PipelineIQ automates that qualification, I'm happy to send over a 2-minute overview or hop on a quick call.\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L009",
+      "row": 9,
+      "name": "Iris Patel",
+      "company": "Logistics Global",
+      "company_size": 800,
+      "industry": "Logistics",
+      "source": "LinkedIn outreach",
+      "last_interaction_date": "2023-09-20",
+      "days_since_interaction": 122,
+      "score": 4,
+      "score_range": [
+        4,
+        4
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+3 size: 800 employees: core mid-market/SMB sweet spot; +0 intent: source 'LinkedIn outreach'; +0 recency: 122 days since last touch: cold (older than 6 weeks); +1 industry: Logistics: adjacent vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: source 'LinkedIn outreach'. weak: 122 days since last touch: cold (older than 6 weeks).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "800 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 0,
+          "max_points": 3,
+          "detail": "source 'LinkedIn outreach'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "122 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Logistics: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 4/10 at or below reject bar (5)",
+        "weak: source 'LinkedIn outreach'",
+        "weak: 122 days since last touch: cold (older than 6 weeks)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L010",
+      "row": 10,
+      "name": "Jack White",
+      "company": "Digital Marketing Agency",
+      "company_size": 120,
+      "industry": "Marketing",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-19",
+      "days_since_interaction": 1,
+      "score": 10,
+      "score_range": [
+        10,
+        10
+      ],
+      "decision": "qualified",
+      "priority": "HIGH",
+      "priority_rank": 2,
+      "reasoning": "+3 size: 120 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +2 recency: 1 days since last touch: hot (within 2 weeks); +2 industry: Marketing: core vertical = 10/10 -> QUALIFIED. score 10/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "120 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "1 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "Marketing: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 10/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Your PipelineIQ demo request",
+        "body": "Hi Jack,\n\nThanks for requesting a demo yesterday. For a 120-person marketing agency like Digital Marketing Agency, I'll show you how PipelineIQ auto-qualifies incoming enquiries and prioritises follow-ups so good-fit prospects don't slip through.\n\nWould Thursday at 10:30 AM or Friday at 3:00 PM work for a 20-minute session?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L011",
+      "row": 11,
+      "name": "Karen Miller",
+      "company": "InsurancePro",
+      "company_size": 600,
+      "industry": "Insurance",
+      "source": "Sales call",
+      "last_interaction_date": "2023-12-15",
+      "days_since_interaction": 36,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 19,
+      "reasoning": "+3 size: 600 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +1 recency: 36 days since last touch: warm (within ~6 weeks); +1 industry: Insurance: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "600 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Sales call'"
+        },
+        {
+          "factor": "recency",
+          "points": 1,
+          "max_points": 2,
+          "detail": "36 days since last touch: warm (within ~6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Insurance: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "warm_followup",
+        "subject": "Checking back in — InsurancePro & PipelineIQ",
+        "body": "Hi Karen,\n\nIt's been about a month since your call with our sales team, so I wanted to check back in. For a 600-person team like InsurancePro, keeping follow-ups consistent and spotting deal risk early is usually a key focus.\n\nIf you're still exploring options, would a short 15-minute catch-up next week make sense?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L012",
+      "row": 12,
+      "name": "Leon Chen",
+      "company": "FinTech Startup",
+      "company_size": 25,
+      "industry": "FinTech",
+      "source": "Referral",
+      "last_interaction_date": "2024-01-17",
+      "days_since_interaction": 3,
+      "score": 8,
+      "score_range": [
+        8,
+        8
+      ],
+      "decision": "qualified",
+      "priority": "MEDIUM",
+      "priority_rank": 11,
+      "reasoning": "+2 size: 25 employees: small but scaling team; +2 intent: source 'Referral'; +2 recency: 3 days since last touch: hot (within 2 weeks); +2 industry: FinTech: core vertical = 8/10 -> QUALIFIED. score 8/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "25 employees: small but scaling team"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Referral'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "3 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "FinTech: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 8/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "warm_followup",
+        "subject": "Following up on your referral to PipelineIQ",
+        "body": "Hi Leon,\n\nThanks for connecting with us via referral earlier this week. For a 25-person FinTech Startup, making sure a lean team focuses only on qualified leads is often the biggest lever.\n\nWould you be up for a quick 15-minute chat this week to see how PipelineIQ prioritises your pipeline?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L013",
+      "row": 13,
+      "name": "Maya Desai",
+      "company": "Agricultural Tech",
+      "company_size": 45,
+      "industry": "Agriculture",
+      "source": "Content download",
+      "last_interaction_date": "2024-01-16",
+      "days_since_interaction": 4,
+      "score": 5,
+      "score_range": [
+        5,
+        5
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+2 size: 45 employees: small but scaling team; +1 intent: source 'Content download'; +2 recency: 4 days since last touch: hot (within 2 weeks); +0 industry: Agriculture: poor vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: Agriculture: poor vertical.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "45 employees: small but scaling team"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Content download'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "4 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 0,
+          "max_points": 2,
+          "detail": "Agriculture: poor vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 5/10 at or below reject bar (5)",
+        "weak: Agriculture: poor vertical"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L014",
+      "row": 14,
+      "name": "Nathan Brooks",
+      "company": "Enterprise Solutions Corp",
+      "company_size": 3500,
+      "industry": "Software",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-13",
+      "days_since_interaction": 7,
+      "score": 9,
+      "score_range": [
+        9,
+        9
+      ],
+      "decision": "qualified",
+      "priority": "HIGH",
+      "priority_rank": 7,
+      "reasoning": "+2 size: 3,500 employees: upper mid-market (longer cycle); +3 intent: source 'Inbound demo request'; +2 recency: 7 days since last touch: hot (within 2 weeks); +2 industry: Software: core vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "3,500 employees: upper mid-market (longer cycle)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "7 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "Software: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 9/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Scheduling your PipelineIQ demo",
+        "body": "Hi Nathan,\n\nThanks for requesting a demo last week. For a 3,500-person software company like Enterprise Solutions Corp, I'll focus on how PipelineIQ surfaces deal risk across longer cycles and keeps follow-ups prioritised at scale.\n\nDo you have 20 minutes this week? I can do Wednesday at 2:00 PM or Friday at 10:00 AM.\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L015",
+      "row": 15,
+      "name": "Olivia Garcia",
+      "company": "Local Restaurant Group",
+      "company_size": 12,
+      "industry": "Hospitality",
+      "source": "LinkedIn outreach",
+      "last_interaction_date": "2023-08-30",
+      "days_since_interaction": 143,
+      "score": 2,
+      "score_range": [
+        2,
+        2
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+2 size: 12 employees: small but scaling team; +0 intent: source 'LinkedIn outreach'; +0 recency: 143 days since last touch: cold (older than 6 weeks); +0 industry: Hospitality: poor vertical = 2/10 -> REJECTED. score 2/10 at or below reject bar (5). weak: source 'LinkedIn outreach'. weak: 143 days since last touch: cold (older than 6 weeks). weak: Hospitality: poor vertical.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "12 employees: small but scaling team"
+        },
+        {
+          "factor": "source_intent",
+          "points": 0,
+          "max_points": 3,
+          "detail": "source 'LinkedIn outreach'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "143 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 0,
+          "max_points": 2,
+          "detail": "Hospitality: poor vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 2/10 at or below reject bar (5)",
+        "weak: source 'LinkedIn outreach'",
+        "weak: 143 days since last touch: cold (older than 6 weeks)",
+        "weak: Hospitality: poor vertical"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L016",
+      "row": 16,
+      "name": "Pamela White",
+      "company": "Pharma Research Inc",
+      "company_size": 2200,
+      "industry": "Pharmaceuticals",
+      "source": "Sales call",
+      "last_interaction_date": "2023-11-25",
+      "days_since_interaction": 56,
+      "score": 5,
+      "score_range": [
+        5,
+        5
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+2 size: 2,200 employees: upper mid-market (longer cycle); +2 intent: source 'Sales call'; +0 recency: 56 days since last touch: cold (older than 6 weeks); +1 industry: Pharmaceuticals: adjacent vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: 56 days since last touch: cold (older than 6 weeks).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "2,200 employees: upper mid-market (longer cycle)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Sales call'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "56 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Pharmaceuticals: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 5/10 at or below reject bar (5)",
+        "weak: 56 days since last touch: cold (older than 6 weeks)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L017",
+      "row": 17,
+      "name": "Quinn Matthews",
+      "company": "Consulting Firm",
+      "company_size": 180,
+      "industry": "Consulting",
+      "source": "Webinar attendee",
+      "last_interaction_date": "2024-01-11",
+      "days_since_interaction": 9,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 22,
+      "reasoning": "+3 size: 180 employees: core mid-market/SMB sweet spot; +1 intent: source 'Webinar attendee'; +2 recency: 9 days since last touch: hot (within 2 weeks); +1 industry: Consulting: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "180 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Webinar attendee'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "9 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Consulting: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "insight_led",
+        "subject": "Lead follow-up at Consulting Firm",
+        "body": "Hi Quinn,\n\nThanks for joining our recent webinar. For a 180-person consulting firm like Consulting Firm, is it a challenge to keep partner and rep follow-ups consistent when inbound interest spikes?\n\nIf that sounds familiar, I'd be glad to share a quick look at how PipelineIQ handles prioritisation—no pressure at all.\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L018",
+      "row": 18,
+      "name": "Rachel Kim",
+      "company": "Government Agency",
+      "company_size": 800,
+      "industry": "Government",
+      "source": "Content download",
+      "last_interaction_date": "2023-12-10",
+      "days_since_interaction": 41,
+      "score": 5,
+      "score_range": [
+        5,
+        5
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+3 size: 800 employees: core mid-market/SMB sweet spot; +1 intent: source 'Content download'; +1 recency: 41 days since last touch: warm (within ~6 weeks); +0 industry: Government: poor vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: Government: poor vertical.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "800 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Content download'"
+        },
+        {
+          "factor": "recency",
+          "points": 1,
+          "max_points": 2,
+          "detail": "41 days since last touch: warm (within ~6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 0,
+          "max_points": 2,
+          "detail": "Government: poor vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 5/10 at or below reject bar (5)",
+        "weak: Government: poor vertical"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L019",
+      "row": 19,
+      "name": "Samuel Lee",
+      "company": "Cybersecurity Startup",
+      "company_size": 60,
+      "industry": "Cybersecurity",
+      "source": "Referral",
+      "last_interaction_date": "2024-01-09",
+      "days_since_interaction": 11,
+      "score": 9,
+      "score_range": [
+        9,
+        9
+      ],
+      "decision": "qualified",
+      "priority": "HIGH",
+      "priority_rank": 8,
+      "reasoning": "+3 size: 60 employees: core mid-market/SMB sweet spot; +2 intent: source 'Referral'; +2 recency: 11 days since last touch: hot (within 2 weeks); +2 industry: Cybersecurity: core vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "60 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Referral'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "11 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "Cybersecurity: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 9/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "warm_followup",
+        "subject": "Following up on your referral — Cybersecurity Startup",
+        "body": "Hi Samuel,\n\nThanks for connecting with us through a referral. For a 60-person Cybersecurity Startup, qualifying technical buyers quickly and spotting stalled deals early can make a big difference to pipeline velocity.\n\nWould you have 15 minutes this week for a brief chat about how PipelineIQ fits into your workflow?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L020",
+      "row": 20,
+      "name": "Tina Patel",
+      "company": "Energy Solutions",
+      "company_size": 900,
+      "industry": "Energy",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2023-10-18",
+      "days_since_interaction": 94,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 16,
+      "reasoning": "+3 size: 900 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +0 recency: 94 days since last touch: cold (older than 6 weeks); +1 industry: Energy: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "900 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "94 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Energy: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Your PipelineIQ demo for Energy Solutions",
+        "body": "Hi Tina,\n\nThanks for requesting a demo of PipelineIQ. For a 900-person Energy team like Energy Solutions, I'd focus on how we auto-qualify inbound leads and surface the ones worth a call today. Would Tuesday or Thursday afternoon work for 30 minutes?\n\nSam from PipelineIQ",
+        "generated_by": "template_fallback"
+      }
+    },
+    {
+      "lead_id": "L021",
+      "row": 21,
+      "name": "Uma Singh",
+      "company": "Event Planning Co",
+      "company_size": 35,
+      "industry": "Events",
+      "source": "LinkedIn outreach",
+      "last_interaction_date": "2024-01-08",
+      "days_since_interaction": 12,
+      "score": 4,
+      "score_range": [
+        4,
+        4
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+2 size: 35 employees: small but scaling team; +0 intent: source 'LinkedIn outreach'; +2 recency: 12 days since last touch: hot (within 2 weeks); +0 industry: Events: poor vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: source 'LinkedIn outreach'. weak: Events: poor vertical.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "35 employees: small but scaling team"
+        },
+        {
+          "factor": "source_intent",
+          "points": 0,
+          "max_points": 3,
+          "detail": "source 'LinkedIn outreach'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "12 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 0,
+          "max_points": 2,
+          "detail": "Events: poor vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 4/10 at or below reject bar (5)",
+        "weak: source 'LinkedIn outreach'",
+        "weak: Events: poor vertical"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L022",
+      "row": 22,
+      "name": "Victor Moore",
+      "company": "Real Estate Platform",
+      "company_size": 250,
+      "industry": "Real Estate",
+      "source": "Sales call",
+      "last_interaction_date": "2024-01-06",
+      "days_since_interaction": 14,
+      "score": 8,
+      "score_range": [
+        8,
+        8
+      ],
+      "decision": "qualified",
+      "priority": "MEDIUM",
+      "priority_rank": 12,
+      "reasoning": "+3 size: 250 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +2 recency: 14 days since last touch: hot (within 2 weeks); +1 industry: Real Estate: adjacent vertical = 8/10 -> QUALIFIED. score 8/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "250 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Sales call'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "14 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Real Estate: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 8/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "warm_followup",
+        "subject": "Following up from our call",
+        "body": "Hi Victor,\n\nThanks for speaking with our sales team a couple of weeks ago. For a 250-person real estate platform, keeping reps focused on the right follow-ups and surfacing deal risk early is usually a top priority—does that match what you're looking to solve?\n\nIf so, would you be open to a 15-minute chat next Tuesday to map out next steps?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L023",
+      "row": 23,
+      "name": "Wendy Zhang",
+      "company": "Fashion Brand",
+      "company_size": 400,
+      "industry": "Retail",
+      "source": "Content download",
+      "last_interaction_date": "2024-01-05",
+      "days_since_interaction": 15,
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 9,
+      "reasoning": "+3 size: 400 employees: core mid-market/SMB sweet spot; +1 intent: source 'Content download'; +1 recency: 15 days since last touch: warm (within ~6 weeks); +1 industry: Retail: adjacent vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "400 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Content download'"
+        },
+        {
+          "factor": "recency",
+          "points": 1,
+          "max_points": 2,
+          "detail": "15 days since last touch: warm (within ~6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Retail: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L024",
+      "row": 24,
+      "name": "Xavier Lopez",
+      "company": "Data Analytics Firm",
+      "company_size": 110,
+      "industry": "Analytics",
+      "source": "Webinar attendee",
+      "last_interaction_date": "2023-12-22",
+      "days_since_interaction": 29,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 23,
+      "reasoning": "+3 size: 110 employees: core mid-market/SMB sweet spot; +1 intent: source 'Webinar attendee'; +1 recency: 29 days since last touch: warm (within ~6 weeks); +2 industry: Analytics: core vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "110 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Webinar attendee'"
+        },
+        {
+          "factor": "recency",
+          "points": 1,
+          "max_points": 2,
+          "detail": "29 days since last touch: warm (within ~6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "Analytics: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "insight_led",
+        "subject": "Lead triage at Data Analytics Firm",
+        "body": "Hi Xavier,\n\nHow does Data Analytics Firm decide which inbound leads get a call first? For 110-person Analytics teams that is often a manual, time-consuming step. PipelineIQ scores and prioritises leads automatically. Worth a quick look?\n\nSam from PipelineIQ",
+        "generated_by": "template_fallback"
+      }
+    },
+    {
+      "lead_id": "L025",
+      "row": 25,
+      "name": "Yuki Tanaka",
+      "company": "Travel Technology",
+      "company_size": 55,
+      "industry": "Travel",
+      "source": "Referral",
+      "last_interaction_date": "2024-01-04",
+      "days_since_interaction": 16,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 18,
+      "reasoning": "+3 size: 55 employees: core mid-market/SMB sweet spot; +2 intent: source 'Referral'; +1 recency: 16 days since last touch: warm (within ~6 weeks); +1 industry: Travel: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "55 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Referral'"
+        },
+        {
+          "factor": "recency",
+          "points": 1,
+          "max_points": 2,
+          "detail": "16 days since last touch: warm (within ~6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Travel: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "warm_followup",
+        "subject": "Introduction via referral",
+        "body": "Hi Yuki,\n\nThanks for connecting with us via referral a couple of weeks ago. For a 55-person travel technology team, staying on top of pipeline hygiene without adding admin work is often a big focus—is that something on your radar right now?\n\nLet me know if you'd like to grab 15 minutes this week to see how PipelineIQ can help.\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L026",
+      "row": 26,
+      "name": "Zara Hassan",
+      "company": "Education Institution",
+      "company_size": 600,
+      "industry": "Education",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2023-12-05",
+      "days_since_interaction": 46,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 14,
+      "reasoning": "+3 size: 600 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +0 recency: 46 days since last touch: cold (older than 6 weeks); +1 industry: Education: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "600 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "46 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Education: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Scheduling your PipelineIQ demo",
+        "body": "Hi Zara,\n\nThank you for reaching out for a demo of PipelineIQ about six weeks ago. For a 600-person education institution, I'd love to walk you through how we help teams prioritize follow-ups and catch deal risk early.\n\nWould Wednesday at 11:00 AM or Thursday at 3:00 PM work for a brief session this week?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L027",
+      "row": 27,
+      "name": "Aaron Benj",
+      "company": "Supply Chain Co",
+      "company_size": 320,
+      "industry": "Supply Chain",
+      "source": "LinkedIn outreach",
+      "last_interaction_date": "2024-01-02",
+      "days_since_interaction": 18,
+      "score": 5,
+      "score_range": [
+        5,
+        5
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+3 size: 320 employees: core mid-market/SMB sweet spot; +0 intent: source 'LinkedIn outreach'; +1 recency: 18 days since last touch: warm (within ~6 weeks); +1 industry: Supply Chain: adjacent vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: source 'LinkedIn outreach'.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "320 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 0,
+          "max_points": 3,
+          "detail": "source 'LinkedIn outreach'"
+        },
+        {
+          "factor": "recency",
+          "points": 1,
+          "max_points": 2,
+          "detail": "18 days since last touch: warm (within ~6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Supply Chain: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 5/10 at or below reject bar (5)",
+        "weak: source 'LinkedIn outreach'"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L028",
+      "row": 28,
+      "name": "Bella Cross",
+      "company": "Legal Services Firm",
+      "company_size": 90,
+      "industry": "Legal",
+      "source": "Sales call",
+      "last_interaction_date": "2023-11-30",
+      "days_since_interaction": 51,
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 10,
+      "reasoning": "+3 size: 90 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +0 recency: 51 days since last touch: cold (older than 6 weeks); +1 industry: Legal: adjacent vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "90 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Sales call'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "51 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Legal: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L029",
+      "row": 29,
+      "name": "Cassandra Jones",
+      "company": "Media & Entertainment",
+      "company_size": 150,
+      "industry": "Media",
+      "source": "Content download",
+      "last_interaction_date": "2024-01-01",
+      "days_since_interaction": 19,
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 11,
+      "reasoning": "+3 size: 150 employees: core mid-market/SMB sweet spot; +1 intent: source 'Content download'; +1 recency: 19 days since last touch: warm (within ~6 weeks); +1 industry: Media: adjacent vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "150 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Content download'"
+        },
+        {
+          "factor": "recency",
+          "points": 1,
+          "max_points": 2,
+          "detail": "19 days since last touch: warm (within ~6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Media: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L030",
+      "row": 30,
+      "name": "Test_MissingSize",
+      "company": "Test Inc",
+      "company_size": null,
+      "industry": "SaaS",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 8,
+      "score_range": [
+        7,
+        10
+      ],
+      "decision": "qualified",
+      "priority": "MEDIUM",
+      "priority_rank": 9,
+      "reasoning": "?(0-3) size: company size unknown; +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 8/10 (range 7-10) -> QUALIFIED. score 8/10 meets qualify bar (7) even with missing data (range 7-10).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": null,
+          "max_points": 3,
+          "detail": "company size unknown"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 8/10 meets qualify bar (7) even with missing data (range 7-10)"
+      ],
+      "data_flags": [
+        "missing_company_size"
+      ],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Your PipelineIQ demo request",
+        "body": "Hi Test_MissingSize,\n\nThanks for requesting a demo today. For SaaS teams like Test Inc, I'd love to show you how PipelineIQ auto-qualifies leads, prioritizes rep follow-ups, and surfaces deal risk.\n\nAre you available tomorrow at 10:30 AM or Thursday at 1:30 PM to take a look?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L031",
+      "row": 31,
+      "name": "Test_VeryLargeEnterprise",
+      "company": "Global Fortune 500 Corp",
+      "company_size": 50000,
+      "industry": "Enterprise Software",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 8,
+      "score_range": [
+        8,
+        8
+      ],
+      "decision": "qualified",
+      "priority": "MEDIUM",
+      "priority_rank": 10,
+      "reasoning": "+1 size: 50,000 employees: large enterprise (long procurement cycle); +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: Enterprise Software: core vertical = 8/10 -> QUALIFIED. score 8/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 1,
+          "max_points": 3,
+          "detail": "50,000 employees: large enterprise (long procurement cycle)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "Enterprise Software: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 8/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "PipelineIQ demo for Global Fortune 500 Corp",
+        "body": "Hi Test_VeryLargeEnterprise,\n\nThank you for your demo request today. With 50,000 employees in enterprise software, I'd like to show you how PipelineIQ helps large sales organizations standardize lead qualification and surface deal risk across complex pipelines.\n\nDo you have 20 minutes this Wednesday at 2:00 PM or Friday at 10:00 AM?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L032",
+      "row": 32,
+      "name": "Test_Solo",
+      "company": "John Doe Consulting",
+      "company_size": 1,
+      "industry": "Consulting",
+      "source": "LinkedIn outreach",
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 3,
+      "score_range": [
+        3,
+        3
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+0 size: 1 employees: micro team (too small for a sales platform); +0 intent: source 'LinkedIn outreach'; +2 recency: 0 days since last touch: hot (within 2 weeks); +1 industry: Consulting: adjacent vertical = 3/10 -> REJECTED. score 3/10 at or below reject bar (5). weak: 1 employees: micro team (too small for a sales platform). weak: source 'LinkedIn outreach'.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 0,
+          "max_points": 3,
+          "detail": "1 employees: micro team (too small for a sales platform)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 0,
+          "max_points": 3,
+          "detail": "source 'LinkedIn outreach'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Consulting: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 3/10 at or below reject bar (5)",
+        "weak: 1 employees: micro team (too small for a sales platform)",
+        "weak: source 'LinkedIn outreach'"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L033",
+      "row": 33,
+      "name": "Test_StaleInteraction",
+      "company": "Old Company Inc",
+      "company_size": 100,
+      "industry": "Manufacturing",
+      "source": "Sales call",
+      "last_interaction_date": "2022-06-15",
+      "days_since_interaction": 584,
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 12,
+      "reasoning": "+3 size: 100 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +0 recency: 584 days since last touch: cold (older than 6 weeks); +1 industry: Manufacturing: adjacent vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "100 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Sales call'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "584 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Manufacturing: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": [
+        "stale_interaction"
+      ],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L034",
+      "row": 34,
+      "name": "Test_RecentEngagement",
+      "company": "Hot Lead Corp",
+      "company_size": 200,
+      "industry": "SaaS",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 10,
+      "score_range": [
+        10,
+        10
+      ],
+      "decision": "qualified",
+      "priority": "HIGH",
+      "priority_rank": 1,
+      "reasoning": "+3 size: 200 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 10/10 -> QUALIFIED. score 10/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "200 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 10/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Quick follow-up on your demo request",
+        "body": "Hi Test_RecentEngagement,\n\nThanks for requesting a demo of PipelineIQ today. For a 200-person SaaS company like Hot Lead Corp, I'll walk you through how we automate lead qualification and keep reps focused on the highest-priority follow-ups.\n\nWould Tuesday at 1:00 PM or Wednesday at 4:00 PM work for a quick call?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L035",
+      "row": 35,
+      "name": "Test_MissingDate",
+      "company": "Mystery Co",
+      "company_size": 150,
+      "industry": "Technology",
+      "source": null,
+      "last_interaction_date": null,
+      "days_since_interaction": null,
+      "score": 8,
+      "score_range": [
+        5,
+        10
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 1,
+      "reasoning": "+3 size: 150 employees: core mid-market/SMB sweet spot; ?(0-3) intent: lead source unknown; ?(0-2) recency: last interaction date unknown; +2 industry: Technology: core vertical = 8/10 (range 5-10) -> REVIEW. missing source_intent, recency: score could be 5-10, too close to call.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "150 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": null,
+          "max_points": 3,
+          "detail": "lead source unknown"
+        },
+        {
+          "factor": "recency",
+          "points": null,
+          "max_points": 2,
+          "detail": "last interaction date unknown"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "Technology: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "missing source_intent, recency: score could be 5-10, too close to call"
+      ],
+      "data_flags": [
+        "missing_source",
+        "missing_last_interaction_date"
+      ],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L036",
+      "row": 36,
+      "name": "Test_UnknownIndustry",
+      "company": "Mysterious Startup",
+      "company_size": 15,
+      "industry": null,
+      "source": "Referral",
+      "last_interaction_date": "2024-01-19",
+      "days_since_interaction": 1,
+      "score": 7,
+      "score_range": [
+        6,
+        8
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 6,
+      "reasoning": "+2 size: 15 employees: small but scaling team; +2 intent: source 'Referral'; +2 recency: 1 days since last touch: hot (within 2 weeks); ?(0-2) industry: industry unknown = 7/10 (range 6-8) -> REVIEW. missing industry_fit: score could be 6-8, too close to call.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "15 employees: small but scaling team"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Referral'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "1 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": null,
+          "max_points": 2,
+          "detail": "industry unknown"
+        }
+      ],
+      "decision_reasons": [
+        "missing industry_fit: score could be 6-8, too close to call"
+      ],
+      "data_flags": [
+        "missing_industry"
+      ],
+      "industry_tier_source": "unclassified",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L037",
+      "row": 37,
+      "name": "Test_VeryRecentSignup",
+      "company": "Brand New Startup",
+      "company_size": 2,
+      "industry": "SaaS",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 7,
+      "reasoning": "+0 size: 2 employees: micro team (too small for a sales platform); +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 7/10 -> REVIEW. score 7/10 meets qualify bar (7). micro team (10 or fewer employees): strong signals but may lack budget, human decides.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 0,
+          "max_points": 3,
+          "detail": "2 employees: micro team (too small for a sales platform)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)",
+        "micro team (10 or fewer employees): strong signals but may lack budget, human decides"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L038",
+      "row": 38,
+      "name": "Test_MultipleInteractions",
+      "company": "Active Company",
+      "company_size": 500,
+      "industry": "Finance",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 9,
+      "score_range": [
+        9,
+        9
+      ],
+      "decision": "qualified",
+      "priority": "HIGH",
+      "priority_rank": 3,
+      "reasoning": "+3 size: 500 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +1 industry: Finance: adjacent vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "500 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Finance: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 9/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Your PipelineIQ demo",
+        "body": "Hi Test_MultipleInteractions,\n\nThanks for submitting a demo request today. For a 500-person finance team like Active Company, I'd love to show you how PipelineIQ surfaces deal risk and prioritizes follow-ups without manual data entry.\n\nAre you free this Thursday at 11:30 AM or Friday at 1:00 PM?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L039",
+      "row": 39,
+      "name": "Test_NoSourceInfo",
+      "company": "Source Unknown Corp",
+      "company_size": 300,
+      "industry": "Retail",
+      "source": null,
+      "last_interaction_date": "2024-01-18",
+      "days_since_interaction": 2,
+      "score": 8,
+      "score_range": [
+        6,
+        9
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 4,
+      "reasoning": "+3 size: 300 employees: core mid-market/SMB sweet spot; ?(0-3) intent: lead source unknown; +2 recency: 2 days since last touch: hot (within 2 weeks); +1 industry: Retail: adjacent vertical = 8/10 (range 6-9) -> REVIEW. missing source_intent: score could be 6-9, too close to call.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "300 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": null,
+          "max_points": 3,
+          "detail": "lead source unknown"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "2 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Retail: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "missing source_intent: score could be 6-9, too close to call"
+      ],
+      "data_flags": [
+        "missing_source"
+      ],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L040",
+      "row": 40,
+      "name": "Test_HighValueMatch",
+      "company": "Perfect Fit Enterprise",
+      "company_size": 2000,
+      "industry": "SaaS",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 9,
+      "score_range": [
+        9,
+        9
+      ],
+      "decision": "qualified",
+      "priority": "HIGH",
+      "priority_rank": 4,
+      "reasoning": "+2 size: 2,000 employees: upper mid-market (longer cycle); +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "2,000 employees: upper mid-market (longer cycle)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 9/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Setting up your PipelineIQ demo",
+        "body": "Hi Test_HighValueMatch,\n\nThank you for requesting a demo today. For a 2,000-person SaaS organization like Perfect Fit Enterprise, I'd like to show you how PipelineIQ auto-qualifies inbound leads and flags deal risk across longer sales cycles.\n\nCould we connect this Wednesday at 9:30 AM or Thursday at 2:30 PM?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L041",
+      "row": 41,
+      "name": "Test_LowValueNiche",
+      "company": "Niche Small Op",
+      "company_size": 5,
+      "industry": "Agriculture",
+      "source": "LinkedIn outreach",
+      "last_interaction_date": "2024-01-15",
+      "days_since_interaction": 5,
+      "score": 2,
+      "score_range": [
+        2,
+        2
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+0 size: 5 employees: micro team (too small for a sales platform); +0 intent: source 'LinkedIn outreach'; +2 recency: 5 days since last touch: hot (within 2 weeks); +0 industry: Agriculture: poor vertical = 2/10 -> REJECTED. score 2/10 at or below reject bar (5). weak: 5 employees: micro team (too small for a sales platform). weak: source 'LinkedIn outreach'. weak: Agriculture: poor vertical.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 0,
+          "max_points": 3,
+          "detail": "5 employees: micro team (too small for a sales platform)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 0,
+          "max_points": 3,
+          "detail": "source 'LinkedIn outreach'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "5 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 0,
+          "max_points": 2,
+          "detail": "Agriculture: poor vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 2/10 at or below reject bar (5)",
+        "weak: 5 employees: micro team (too small for a sales platform)",
+        "weak: source 'LinkedIn outreach'",
+        "weak: Agriculture: poor vertical"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L042",
+      "row": 42,
+      "name": "Test_MissingName",
+      "company": null,
+      "company_size": 400,
+      "industry": "Consulting",
+      "source": "Sales call",
+      "last_interaction_date": "2024-01-19",
+      "days_since_interaction": 1,
+      "score": 8,
+      "score_range": [
+        8,
+        8
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 5,
+      "reasoning": "+3 size: 400 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +2 recency: 1 days since last touch: hot (within 2 weeks); +1 industry: Consulting: adjacent vertical = 8/10 -> REVIEW. score 8/10 meets qualify bar (7). no contact name/company: cannot send personalised outreach.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "400 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Sales call'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "1 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Consulting: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 8/10 meets qualify bar (7)",
+        "no contact name/company: cannot send personalised outreach"
+      ],
+      "data_flags": [
+        "missing_company"
+      ],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L043",
+      "row": 43,
+      "name": "Test_NameOnly",
+      "company": "James Wilson",
+      "company_size": null,
+      "industry": null,
+      "source": null,
+      "last_interaction_date": null,
+      "days_since_interaction": null,
+      "score": 5,
+      "score_range": [
+        0,
+        10
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 3,
+      "reasoning": "?(0-3) size: company size unknown; ?(0-3) intent: lead source unknown; ?(0-2) recency: last interaction date unknown; ?(0-2) industry: industry unknown = 5/10 (range 0-10) -> REVIEW. missing size_fit, source_intent, recency, industry_fit: score could be 0-10, too close to call.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": null,
+          "max_points": 3,
+          "detail": "company size unknown"
+        },
+        {
+          "factor": "source_intent",
+          "points": null,
+          "max_points": 3,
+          "detail": "lead source unknown"
+        },
+        {
+          "factor": "recency",
+          "points": null,
+          "max_points": 2,
+          "detail": "last interaction date unknown"
+        },
+        {
+          "factor": "industry_fit",
+          "points": null,
+          "max_points": 2,
+          "detail": "industry unknown"
+        }
+      ],
+      "decision_reasons": [
+        "missing size_fit, source_intent, recency, industry_fit: score could be 0-10, too close to call"
+      ],
+      "data_flags": [
+        "missing_industry",
+        "missing_source",
+        "missing_company_size",
+        "missing_last_interaction_date"
+      ],
+      "industry_tier_source": "unclassified",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L044",
+      "row": 44,
+      "name": "Test_PartialData",
+      "company": "Tech Partial",
+      "company_size": null,
+      "industry": "SaaS",
+      "source": null,
+      "last_interaction_date": "2024-01-20",
+      "days_since_interaction": 0,
+      "score": 7,
+      "score_range": [
+        4,
+        10
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 2,
+      "reasoning": "?(0-3) size: company size unknown; ?(0-3) intent: lead source unknown; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 7/10 (range 4-10) -> REVIEW. missing size_fit, source_intent: score could be 4-10, too close to call.",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": null,
+          "max_points": 3,
+          "detail": "company size unknown"
+        },
+        {
+          "factor": "source_intent",
+          "points": null,
+          "max_points": 3,
+          "detail": "lead source unknown"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "0 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "missing size_fit, source_intent: score could be 4-10, too close to call"
+      ],
+      "data_flags": [
+        "missing_source",
+        "missing_company_size"
+      ],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L045",
+      "row": 45,
+      "name": "Test_WeekOldInteraction",
+      "company": "Week Old Corp",
+      "company_size": 250,
+      "industry": "Logistics",
+      "source": "Webinar attendee",
+      "last_interaction_date": "2024-01-13",
+      "days_since_interaction": 7,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 21,
+      "reasoning": "+3 size: 250 employees: core mid-market/SMB sweet spot; +1 intent: source 'Webinar attendee'; +2 recency: 7 days since last touch: hot (within 2 weeks); +1 industry: Logistics: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "250 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Webinar attendee'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "7 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Logistics: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "insight_led",
+        "subject": "Following up on last week's webinar",
+        "body": "Hi Test_WeekOldInteraction,\n\nThanks for joining our webinar last week. With a 250-person team in Logistics, are your reps spending too much time manually sorting through inbound leads to figure out which ones are actually ready to buy?\n\nPipelineIQ auto-qualifies leads and surfaces deal risk so your team can focus on the right accounts. Would you be open to a brief 15-minute chat next week to see how it fits Week Old Corp?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L046",
+      "row": 46,
+      "name": "Test_MidMarketSoft",
+      "company": "Mid Market Software",
+      "company_size": 1500,
+      "industry": "SaaS",
+      "source": "Content download",
+      "last_interaction_date": "2024-01-18",
+      "days_since_interaction": 2,
+      "score": 7,
+      "score_range": [
+        7,
+        7
+      ],
+      "decision": "qualified",
+      "priority": "LOW",
+      "priority_rank": 20,
+      "reasoning": "+2 size: 1,500 employees: upper mid-market (longer cycle); +1 intent: source 'Content download'; +2 recency: 2 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "1,500 employees: upper mid-market (longer cycle)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 1,
+          "max_points": 3,
+          "detail": "source 'Content download'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "2 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 7/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "insight_led",
+        "subject": "Lead qualification for Mid Market Software",
+        "body": "Hi Test_MidMarketSoft,\n\nI saw you downloaded our guide two days ago. For a 1,500-person SaaS company, it can be tough to keep reps focused on the highest-priority follow-ups without letting longer-cycle deals slip through the cracks—is that something your team is navigating?\n\nPipelineIQ prioritises follow-ups and flags deal risk automatically. If you're curious, I'd be happy to share a quick 2-minute walkthrough video.\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    },
+    {
+      "lead_id": "L047",
+      "row": 47,
+      "name": "Test_StartupShutdown",
+      "company": "Failed Startup",
+      "company_size": 8,
+      "industry": "SaaS",
+      "source": "Referral",
+      "last_interaction_date": "2023-05-01",
+      "days_since_interaction": 264,
+      "score": 4,
+      "score_range": [
+        4,
+        4
+      ],
+      "decision": "rejected",
+      "priority": "NONE",
+      "priority_rank": null,
+      "reasoning": "+0 size: 8 employees: micro team (too small for a sales platform); +2 intent: source 'Referral'; +0 recency: 264 days since last touch: cold (older than 6 weeks); +2 industry: SaaS: core vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: 8 employees: micro team (too small for a sales platform). weak: 264 days since last touch: cold (older than 6 weeks).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 0,
+          "max_points": 3,
+          "detail": "8 employees: micro team (too small for a sales platform)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Referral'"
+        },
+        {
+          "factor": "recency",
+          "points": 0,
+          "max_points": 2,
+          "detail": "264 days since last touch: cold (older than 6 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 2,
+          "max_points": 2,
+          "detail": "SaaS: core vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 4/10 at or below reject bar (5)",
+        "weak: 8 employees: micro team (too small for a sales platform)",
+        "weak: 264 days since last touch: cold (older than 6 weeks)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L048",
+      "row": 48,
+      "name": "Test_GovernmentBuyer",
+      "company": "Government Tech",
+      "company_size": 3000,
+      "industry": "Government",
+      "source": "Sales call",
+      "last_interaction_date": "2024-01-17",
+      "days_since_interaction": 3,
+      "score": 6,
+      "score_range": [
+        6,
+        6
+      ],
+      "decision": "review",
+      "priority": "REVIEW",
+      "priority_rank": 13,
+      "reasoning": "+2 size: 3,000 employees: upper mid-market (longer cycle); +2 intent: source 'Sales call'; +2 recency: 3 days since last touch: hot (within 2 weeks); +0 industry: Government: poor vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 2,
+          "max_points": 3,
+          "detail": "3,000 employees: upper mid-market (longer cycle)"
+        },
+        {
+          "factor": "source_intent",
+          "points": 2,
+          "max_points": 3,
+          "detail": "source 'Sales call'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "3 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 0,
+          "max_points": 2,
+          "detail": "Government: poor vertical"
+        }
+      ],
+      "decision_reasons": [
+        "borderline score 6/10 (between 5 and 7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": null
+    },
+    {
+      "lead_id": "L049",
+      "row": 49,
+      "name": "Test_SMBAverage",
+      "company": "Average SMB Co",
+      "company_size": 120,
+      "industry": "Retail",
+      "source": "Inbound demo request",
+      "last_interaction_date": "2024-01-19",
+      "days_since_interaction": 1,
+      "score": 9,
+      "score_range": [
+        9,
+        9
+      ],
+      "decision": "qualified",
+      "priority": "HIGH",
+      "priority_rank": 5,
+      "reasoning": "+3 size: 120 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +2 recency: 1 days since last touch: hot (within 2 weeks); +1 industry: Retail: adjacent vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).",
+      "factor_breakdown": [
+        {
+          "factor": "size_fit",
+          "points": 3,
+          "max_points": 3,
+          "detail": "120 employees: core mid-market/SMB sweet spot"
+        },
+        {
+          "factor": "source_intent",
+          "points": 3,
+          "max_points": 3,
+          "detail": "source 'Inbound demo request'"
+        },
+        {
+          "factor": "recency",
+          "points": 2,
+          "max_points": 2,
+          "detail": "1 days since last touch: hot (within 2 weeks)"
+        },
+        {
+          "factor": "industry_fit",
+          "points": 1,
+          "max_points": 2,
+          "detail": "Retail: adjacent vertical"
+        }
+      ],
+      "decision_reasons": [
+        "score 9/10 meets qualify bar (7)"
+      ],
+      "data_flags": [],
+      "industry_tier_source": "config",
+      "ai_concern": null,
+      "outreach": {
+        "angle": "demo_followup",
+        "subject": "Your PipelineIQ demo request",
+        "body": "Hi Test_SMBAverage,\n\nThanks for requesting a demo yesterday! For a 120-person Retail company like Average SMB Co, I'll show you how PipelineIQ auto-qualifies incoming leads, prioritises daily follow-ups, and surfaces deal risk before opportunities stall.\n\nDo you have 20 minutes this Thursday at 10:00 AM or Friday at 2:00 PM?\n\nSam from PipelineIQ",
+        "generated_by": "gemini-4-hydrogen"
+      }
+    }
+  ]
+}

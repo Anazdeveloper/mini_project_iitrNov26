@@ -1,0 +1,184 @@
+priority_rank,priority,decision,score,score_range,name,company,company_size,industry,source,last_interaction_date,reasoning,data_flags,outreach_subject,outreach_body
+1,HIGH,qualified,10,10-10,Test_RecentEngagement,Hot Lead Corp,200,SaaS,Inbound demo request,2024-01-20,+3 size: 200 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 10/10 -> QUALIFIED. score 10/10 meets qualify bar (7).,,Quick follow-up on your demo request,"Hi Test_RecentEngagement,
+
+Thanks for requesting a demo of PipelineIQ today. For a 200-person SaaS company like Hot Lead Corp, I'll walk you through how we automate lead qualification and keep reps focused on the highest-priority follow-ups.
+
+Would Tuesday at 1:00 PM or Wednesday at 4:00 PM work for a quick call?
+
+Sam from PipelineIQ"
+2,HIGH,qualified,10,10-10,Jack White,Digital Marketing Agency,120,Marketing,Inbound demo request,2024-01-19,+3 size: 120 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +2 recency: 1 days since last touch: hot (within 2 weeks); +2 industry: Marketing: core vertical = 10/10 -> QUALIFIED. score 10/10 meets qualify bar (7).,,Your PipelineIQ demo request,"Hi Jack,
+
+Thanks for requesting a demo yesterday. For a 120-person marketing agency like Digital Marketing Agency, I'll show you how PipelineIQ auto-qualifies incoming enquiries and prioritises follow-ups so good-fit prospects don't slip through.
+
+Would Thursday at 10:30 AM or Friday at 3:00 PM work for a 20-minute session?
+
+Sam from PipelineIQ"
+3,HIGH,qualified,9,9-9,Test_MultipleInteractions,Active Company,500,Finance,Inbound demo request,2024-01-20,+3 size: 500 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +1 industry: Finance: adjacent vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).,,Your PipelineIQ demo,"Hi Test_MultipleInteractions,
+
+Thanks for submitting a demo request today. For a 500-person finance team like Active Company, I'd love to show you how PipelineIQ surfaces deal risk and prioritizes follow-ups without manual data entry.
+
+Are you free this Thursday at 11:30 AM or Friday at 1:00 PM?
+
+Sam from PipelineIQ"
+4,HIGH,qualified,9,9-9,Test_HighValueMatch,Perfect Fit Enterprise,2000,SaaS,Inbound demo request,2024-01-20,"+2 size: 2,000 employees: upper mid-market (longer cycle); +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).",,Setting up your PipelineIQ demo,"Hi Test_HighValueMatch,
+
+Thank you for requesting a demo today. For a 2,000-person SaaS organization like Perfect Fit Enterprise, I'd like to show you how PipelineIQ auto-qualifies inbound leads and flags deal risk across longer sales cycles.
+
+Could we connect this Wednesday at 9:30 AM or Thursday at 2:30 PM?
+
+Sam from PipelineIQ"
+5,HIGH,qualified,9,9-9,Test_SMBAverage,Average SMB Co,120,Retail,Inbound demo request,2024-01-19,+3 size: 120 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +2 recency: 1 days since last touch: hot (within 2 weeks); +1 industry: Retail: adjacent vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).,,Your PipelineIQ demo request,"Hi Test_SMBAverage,
+
+Thanks for requesting a demo yesterday! For a 120-person Retail company like Average SMB Co, I'll show you how PipelineIQ auto-qualifies incoming leads, prioritises daily follow-ups, and surfaces deal risk before opportunities stall.
+
+Do you have 20 minutes this Thursday at 10:00 AM or Friday at 2:00 PM?
+
+Sam from PipelineIQ"
+6,HIGH,qualified,9,9-9,Alice Chen,CloudScale AI,50,SaaS,Inbound demo request,2024-01-15,+2 size: 50 employees: small but scaling team; +3 intent: source 'Inbound demo request'; +2 recency: 5 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).,,Your PipelineIQ demo for CloudScale AI,"Hi Alice,
+
+Thanks for requesting a demo with PipelineIQ. For a scaling 50-person SaaS team like CloudScale AI, I'll walk through how we auto-qualify inbound leads, prioritise rep follow-ups, and surface deal risk before it stalls.
+
+Are you free this week for a 20-minute walkthrough? I have Tuesday at 10:00 AM or Thursday at 2:00 PM open.
+
+Sam from PipelineIQ"
+7,HIGH,qualified,9,9-9,Nathan Brooks,Enterprise Solutions Corp,3500,Software,Inbound demo request,2024-01-13,"+2 size: 3,500 employees: upper mid-market (longer cycle); +3 intent: source 'Inbound demo request'; +2 recency: 7 days since last touch: hot (within 2 weeks); +2 industry: Software: core vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).",,Scheduling your PipelineIQ demo,"Hi Nathan,
+
+Thanks for requesting a demo last week. For a 3,500-person software company like Enterprise Solutions Corp, I'll focus on how PipelineIQ surfaces deal risk across longer cycles and keeps follow-ups prioritised at scale.
+
+Do you have 20 minutes this week? I can do Wednesday at 2:00 PM or Friday at 10:00 AM.
+
+Sam from PipelineIQ"
+8,HIGH,qualified,9,9-9,Samuel Lee,Cybersecurity Startup,60,Cybersecurity,Referral,2024-01-09,+3 size: 60 employees: core mid-market/SMB sweet spot; +2 intent: source 'Referral'; +2 recency: 11 days since last touch: hot (within 2 weeks); +2 industry: Cybersecurity: core vertical = 9/10 -> QUALIFIED. score 9/10 meets qualify bar (7).,,Following up on your referral — Cybersecurity Startup,"Hi Samuel,
+
+Thanks for connecting with us through a referral. For a 60-person Cybersecurity Startup, qualifying technical buyers quickly and spotting stalled deals early can make a big difference to pipeline velocity.
+
+Would you have 15 minutes this week for a brief chat about how PipelineIQ fits into your workflow?
+
+Sam from PipelineIQ"
+9,MEDIUM,qualified,8,7-10,Test_MissingSize,Test Inc,,SaaS,Inbound demo request,2024-01-20,?(0-3) size: company size unknown; +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 8/10 (range 7-10) -> QUALIFIED. score 8/10 meets qualify bar (7) even with missing data (range 7-10).,missing_company_size,Your PipelineIQ demo request,"Hi Test_MissingSize,
+
+Thanks for requesting a demo today. For SaaS teams like Test Inc, I'd love to show you how PipelineIQ auto-qualifies leads, prioritizes rep follow-ups, and surfaces deal risk.
+
+Are you available tomorrow at 10:30 AM or Thursday at 1:30 PM to take a look?
+
+Sam from PipelineIQ"
+10,MEDIUM,qualified,8,8-8,Test_VeryLargeEnterprise,Global Fortune 500 Corp,50000,Enterprise Software,Inbound demo request,2024-01-20,"+1 size: 50,000 employees: large enterprise (long procurement cycle); +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: Enterprise Software: core vertical = 8/10 -> QUALIFIED. score 8/10 meets qualify bar (7).",,PipelineIQ demo for Global Fortune 500 Corp,"Hi Test_VeryLargeEnterprise,
+
+Thank you for your demo request today. With 50,000 employees in enterprise software, I'd like to show you how PipelineIQ helps large sales organizations standardize lead qualification and surface deal risk across complex pipelines.
+
+Do you have 20 minutes this Wednesday at 2:00 PM or Friday at 10:00 AM?
+
+Sam from PipelineIQ"
+11,MEDIUM,qualified,8,8-8,Leon Chen,FinTech Startup,25,FinTech,Referral,2024-01-17,+2 size: 25 employees: small but scaling team; +2 intent: source 'Referral'; +2 recency: 3 days since last touch: hot (within 2 weeks); +2 industry: FinTech: core vertical = 8/10 -> QUALIFIED. score 8/10 meets qualify bar (7).,,Following up on your referral to PipelineIQ,"Hi Leon,
+
+Thanks for connecting with us via referral earlier this week. For a 25-person FinTech Startup, making sure a lean team focuses only on qualified leads is often the biggest lever.
+
+Would you be up for a quick 15-minute chat this week to see how PipelineIQ prioritises your pipeline?
+
+Sam from PipelineIQ"
+12,MEDIUM,qualified,8,8-8,Victor Moore,Real Estate Platform,250,Real Estate,Sales call,2024-01-06,+3 size: 250 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +2 recency: 14 days since last touch: hot (within 2 weeks); +1 industry: Real Estate: adjacent vertical = 8/10 -> QUALIFIED. score 8/10 meets qualify bar (7).,,Following up from our call,"Hi Victor,
+
+Thanks for speaking with our sales team a couple of weeks ago. For a 250-person real estate platform, keeping reps focused on the right follow-ups and surfacing deal risk early is usually a top priority—does that match what you're looking to solve?
+
+If so, would you be open to a 15-minute chat next Tuesday to map out next steps?
+
+Sam from PipelineIQ"
+13,MEDIUM,qualified,8,8-8,Henry Park,EdTech Innovations,75,EdTech,Content download,2024-01-14,+3 size: 75 employees: core mid-market/SMB sweet spot; +1 intent: source 'Content download'; +2 recency: 6 days since last touch: hot (within 2 weeks); +2 industry: EdTech: core vertical = 8/10 -> QUALIFIED. score 8/10 meets qualify bar (7).,,Quick question on lead qualification at EdTech Innovations,"Hi Henry,
+
+Thanks for downloading our recent guide. At a 75-person EdTech company like EdTech Innovations, are you finding that reps spend too much time manually sorting inbound leads instead of working the best-fit accounts?
+
+If you'd like to see how PipelineIQ automates that qualification, I'm happy to send over a 2-minute overview or hop on a quick call.
+
+Sam from PipelineIQ"
+14,LOW,qualified,7,7-7,Zara Hassan,Education Institution,600,Education,Inbound demo request,2023-12-05,+3 size: 600 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +0 recency: 46 days since last touch: cold (older than 6 weeks); +1 industry: Education: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).,,Scheduling your PipelineIQ demo,"Hi Zara,
+
+Thank you for reaching out for a demo of PipelineIQ about six weeks ago. For a 600-person education institution, I'd love to walk you through how we help teams prioritize follow-ups and catch deal risk early.
+
+Would Wednesday at 11:00 AM or Thursday at 3:00 PM work for a brief session this week?
+
+Sam from PipelineIQ"
+15,LOW,qualified,7,7-7,Emma Thompson,RetailWorks Solutions,200,Retail,Inbound demo request,2023-11-10,+3 size: 200 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +0 recency: 71 days since last touch: cold (older than 6 weeks); +1 industry: Retail: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).,,Following up on your PipelineIQ demo request,"Hi Emma,
+
+Thanks for reaching out about a demo a little while back. For a 200-person retail business like RetailWorks Solutions, I'd love to show how PipelineIQ keeps your sales team focused on the highest-priority leads and flags deal risk early.
+
+If this is still on your radar, would Wednesday at 11:00 AM or Friday at 1:30 PM work for a quick look?
+
+Sam from PipelineIQ"
+16,LOW,qualified,7,7-7,Tina Patel,Energy Solutions,900,Energy,Inbound demo request,2023-10-18,+3 size: 900 employees: core mid-market/SMB sweet spot; +3 intent: source 'Inbound demo request'; +0 recency: 94 days since last touch: cold (older than 6 weeks); +1 industry: Energy: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).,,Your PipelineIQ demo for Energy Solutions,"Hi Tina,
+
+Thanks for requesting a demo of PipelineIQ. For a 900-person Energy team like Energy Solutions, I'd focus on how we auto-qualify inbound leads and surface the ones worth a call today. Would Tuesday or Thursday afternoon work for 30 minutes?
+
+Sam from PipelineIQ"
+17,LOW,qualified,7,7-7,Frank Liu,Healthcare Systems Ltd,1200,Healthcare,Sales call,2024-01-12,"+2 size: 1,200 employees: upper mid-market (longer cycle); +2 intent: source 'Sales call'; +2 recency: 8 days since last touch: hot (within 2 weeks); +1 industry: Healthcare: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",,Next steps after your call with PipelineIQ,"Hi Frank,
+
+Thanks for speaking with our team last week. With a 1,200-person organisation like Healthcare Systems Ltd, keeping complex, longer-cycle deals moving without losing visibility is often top of mind.
+
+Would you be open to a brief 15-minute follow-up this week to look at how PipelineIQ surfaces deal risk for larger teams?
+
+Sam from PipelineIQ"
+18,LOW,qualified,7,7-7,Yuki Tanaka,Travel Technology,55,Travel,Referral,2024-01-04,+3 size: 55 employees: core mid-market/SMB sweet spot; +2 intent: source 'Referral'; +1 recency: 16 days since last touch: warm (within ~6 weeks); +1 industry: Travel: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).,,Introduction via referral,"Hi Yuki,
+
+Thanks for connecting with us via referral a couple of weeks ago. For a 55-person travel technology team, staying on top of pipeline hygiene without adding admin work is often a big focus—is that something on your radar right now?
+
+Let me know if you'd like to grab 15 minutes this week to see how PipelineIQ can help.
+
+Sam from PipelineIQ"
+19,LOW,qualified,7,7-7,Karen Miller,InsurancePro,600,Insurance,Sales call,2023-12-15,+3 size: 600 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +1 recency: 36 days since last touch: warm (within ~6 weeks); +1 industry: Insurance: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).,,Checking back in — InsurancePro & PipelineIQ,"Hi Karen,
+
+It's been about a month since your call with our sales team, so I wanted to check back in. For a 600-person team like InsurancePro, keeping follow-ups consistent and spotting deal risk early is usually a key focus.
+
+If you're still exploring options, would a short 15-minute catch-up next week make sense?
+
+Sam from PipelineIQ"
+20,LOW,qualified,7,7-7,Test_MidMarketSoft,Mid Market Software,1500,SaaS,Content download,2024-01-18,"+2 size: 1,500 employees: upper mid-market (longer cycle); +1 intent: source 'Content download'; +2 recency: 2 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).",,Lead qualification for Mid Market Software,"Hi Test_MidMarketSoft,
+
+I saw you downloaded our guide two days ago. For a 1,500-person SaaS company, it can be tough to keep reps focused on the highest-priority follow-ups without letting longer-cycle deals slip through the cracks—is that something your team is navigating?
+
+PipelineIQ prioritises follow-ups and flags deal risk automatically. If you're curious, I'd be happy to share a quick 2-minute walkthrough video.
+
+Sam from PipelineIQ"
+21,LOW,qualified,7,7-7,Test_WeekOldInteraction,Week Old Corp,250,Logistics,Webinar attendee,2024-01-13,+3 size: 250 employees: core mid-market/SMB sweet spot; +1 intent: source 'Webinar attendee'; +2 recency: 7 days since last touch: hot (within 2 weeks); +1 industry: Logistics: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).,,Following up on last week's webinar,"Hi Test_WeekOldInteraction,
+
+Thanks for joining our webinar last week. With a 250-person team in Logistics, are your reps spending too much time manually sorting through inbound leads to figure out which ones are actually ready to buy?
+
+PipelineIQ auto-qualifies leads and surfaces deal risk so your team can focus on the right accounts. Would you be open to a brief 15-minute chat next week to see how it fits Week Old Corp?
+
+Sam from PipelineIQ"
+22,LOW,qualified,7,7-7,Quinn Matthews,Consulting Firm,180,Consulting,Webinar attendee,2024-01-11,+3 size: 180 employees: core mid-market/SMB sweet spot; +1 intent: source 'Webinar attendee'; +2 recency: 9 days since last touch: hot (within 2 weeks); +1 industry: Consulting: adjacent vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).,,Lead follow-up at Consulting Firm,"Hi Quinn,
+
+Thanks for joining our recent webinar. For a 180-person consulting firm like Consulting Firm, is it a challenge to keep partner and rep follow-ups consistent when inbound interest spikes?
+
+If that sounds familiar, I'd be glad to share a quick look at how PipelineIQ handles prioritisation—no pressure at all.
+
+Sam from PipelineIQ"
+23,LOW,qualified,7,7-7,Xavier Lopez,Data Analytics Firm,110,Analytics,Webinar attendee,2023-12-22,+3 size: 110 employees: core mid-market/SMB sweet spot; +1 intent: source 'Webinar attendee'; +1 recency: 29 days since last touch: warm (within ~6 weeks); +2 industry: Analytics: core vertical = 7/10 -> QUALIFIED. score 7/10 meets qualify bar (7).,,Lead triage at Data Analytics Firm,"Hi Xavier,
+
+How does Data Analytics Firm decide which inbound leads get a call first? For 110-person Analytics teams that is often a manual, time-consuming step. PipelineIQ scores and prioritises leads automatically. Worth a quick look?
+
+Sam from PipelineIQ"
+1,REVIEW,review,8,5-10,Test_MissingDate,Mystery Co,150,Technology,,,"+3 size: 150 employees: core mid-market/SMB sweet spot; ?(0-3) intent: lead source unknown; ?(0-2) recency: last interaction date unknown; +2 industry: Technology: core vertical = 8/10 (range 5-10) -> REVIEW. missing source_intent, recency: score could be 5-10, too close to call.",missing_source; missing_last_interaction_date,,
+2,REVIEW,review,7,4-10,Test_PartialData,Tech Partial,,SaaS,,2024-01-20,"?(0-3) size: company size unknown; ?(0-3) intent: lead source unknown; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 7/10 (range 4-10) -> REVIEW. missing size_fit, source_intent: score could be 4-10, too close to call.",missing_source; missing_company_size,,
+3,REVIEW,review,5,0-10,Test_NameOnly,James Wilson,,,,,"?(0-3) size: company size unknown; ?(0-3) intent: lead source unknown; ?(0-2) recency: last interaction date unknown; ?(0-2) industry: industry unknown = 5/10 (range 0-10) -> REVIEW. missing size_fit, source_intent, recency, industry_fit: score could be 0-10, too close to call.",missing_industry; missing_source; missing_company_size; missing_last_interaction_date,,
+4,REVIEW,review,8,6-9,Test_NoSourceInfo,Source Unknown Corp,300,Retail,,2024-01-18,"+3 size: 300 employees: core mid-market/SMB sweet spot; ?(0-3) intent: lead source unknown; +2 recency: 2 days since last touch: hot (within 2 weeks); +1 industry: Retail: adjacent vertical = 8/10 (range 6-9) -> REVIEW. missing source_intent: score could be 6-9, too close to call.",missing_source,,
+5,REVIEW,review,8,8-8,Test_MissingName,,400,Consulting,Sales call,2024-01-19,+3 size: 400 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +2 recency: 1 days since last touch: hot (within 2 weeks); +1 industry: Consulting: adjacent vertical = 8/10 -> REVIEW. score 8/10 meets qualify bar (7). no contact name/company: cannot send personalised outreach.,missing_company,,
+6,REVIEW,review,7,6-8,Test_UnknownIndustry,Mysterious Startup,15,,Referral,2024-01-19,"+2 size: 15 employees: small but scaling team; +2 intent: source 'Referral'; +2 recency: 1 days since last touch: hot (within 2 weeks); ?(0-2) industry: industry unknown = 7/10 (range 6-8) -> REVIEW. missing industry_fit: score could be 6-8, too close to call.",missing_industry,,
+7,REVIEW,review,7,7-7,Test_VeryRecentSignup,Brand New Startup,2,SaaS,Inbound demo request,2024-01-20,"+0 size: 2 employees: micro team (too small for a sales platform); +3 intent: source 'Inbound demo request'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 7/10 -> REVIEW. score 7/10 meets qualify bar (7). micro team (10 or fewer employees): strong signals but may lack budget, human decides.",,,
+8,REVIEW,review,6,6-6,David Moore,StartupXYZ,3,SaaS,Referral,2024-01-18,+0 size: 3 employees: micro team (too small for a sales platform); +2 intent: source 'Referral'; +2 recency: 2 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).,,,
+9,REVIEW,review,6,6-6,Wendy Zhang,Fashion Brand,400,Retail,Content download,2024-01-05,+3 size: 400 employees: core mid-market/SMB sweet spot; +1 intent: source 'Content download'; +1 recency: 15 days since last touch: warm (within ~6 weeks); +1 industry: Retail: adjacent vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).,,,
+10,REVIEW,review,6,6-6,Bella Cross,Legal Services Firm,90,Legal,Sales call,2023-11-30,+3 size: 90 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +0 recency: 51 days since last touch: cold (older than 6 weeks); +1 industry: Legal: adjacent vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).,,,
+11,REVIEW,review,6,6-6,Cassandra Jones,Media & Entertainment,150,Media,Content download,2024-01-01,+3 size: 150 employees: core mid-market/SMB sweet spot; +1 intent: source 'Content download'; +1 recency: 19 days since last touch: warm (within ~6 weeks); +1 industry: Media: adjacent vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).,,,
+12,REVIEW,review,6,6-6,Test_StaleInteraction,Old Company Inc,100,Manufacturing,Sales call,2022-06-15,+3 size: 100 employees: core mid-market/SMB sweet spot; +2 intent: source 'Sales call'; +0 recency: 584 days since last touch: cold (older than 6 weeks); +1 industry: Manufacturing: adjacent vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).,stale_interaction,,
+13,REVIEW,review,6,6-6,Test_GovernmentBuyer,Government Tech,3000,Government,Sales call,2024-01-17,"+2 size: 3,000 employees: upper mid-market (longer cycle); +2 intent: source 'Sales call'; +2 recency: 3 days since last touch: hot (within 2 weeks); +0 industry: Government: poor vertical = 6/10 -> REVIEW. borderline score 6/10 (between 5 and 7).",,,
+,NONE,rejected,5,5-5,Grace Lee,Manufacturing Co,450,Manufacturing,Webinar attendee,2023-10-05,+3 size: 450 employees: core mid-market/SMB sweet spot; +1 intent: source 'Webinar attendee'; +0 recency: 107 days since last touch: cold (older than 6 weeks); +1 industry: Manufacturing: adjacent vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: 107 days since last touch: cold (older than 6 weeks).,,,
+,NONE,rejected,5,5-5,Maya Desai,Agricultural Tech,45,Agriculture,Content download,2024-01-16,+2 size: 45 employees: small but scaling team; +1 intent: source 'Content download'; +2 recency: 4 days since last touch: hot (within 2 weeks); +0 industry: Agriculture: poor vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: Agriculture: poor vertical.,,,
+,NONE,rejected,5,5-5,Pamela White,Pharma Research Inc,2200,Pharmaceuticals,Sales call,2023-11-25,"+2 size: 2,200 employees: upper mid-market (longer cycle); +2 intent: source 'Sales call'; +0 recency: 56 days since last touch: cold (older than 6 weeks); +1 industry: Pharmaceuticals: adjacent vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: 56 days since last touch: cold (older than 6 weeks).",,,
+,NONE,rejected,5,5-5,Rachel Kim,Government Agency,800,Government,Content download,2023-12-10,+3 size: 800 employees: core mid-market/SMB sweet spot; +1 intent: source 'Content download'; +1 recency: 41 days since last touch: warm (within ~6 weeks); +0 industry: Government: poor vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: Government: poor vertical.,,,
+,NONE,rejected,5,5-5,Aaron Benj,Supply Chain Co,320,Supply Chain,LinkedIn outreach,2024-01-02,+3 size: 320 employees: core mid-market/SMB sweet spot; +0 intent: source 'LinkedIn outreach'; +1 recency: 18 days since last touch: warm (within ~6 weeks); +1 industry: Supply Chain: adjacent vertical = 5/10 -> REJECTED. score 5/10 at or below reject bar (5). weak: source 'LinkedIn outreach'.,,,
+,NONE,rejected,4,4-4,Bob Rodriguez,TechVentures Inc,8,SaaS,LinkedIn outreach,2024-01-20,+0 size: 8 employees: micro team (too small for a sales platform); +0 intent: source 'LinkedIn outreach'; +2 recency: 0 days since last touch: hot (within 2 weeks); +2 industry: SaaS: core vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: 8 employees: micro team (too small for a sales platform). weak: source 'LinkedIn outreach'.,,,
+,NONE,rejected,4,4-4,Carol Singh,National Bank Corp,5000,Finance,Content download,2023-12-01,"+2 size: 5,000 employees: upper mid-market (longer cycle); +1 intent: source 'Content download'; +0 recency: 50 days since last touch: cold (older than 6 weeks); +1 industry: Finance: adjacent vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: 50 days since last touch: cold (older than 6 weeks).",,,
+,NONE,rejected,4,4-4,Iris Patel,Logistics Global,800,Logistics,LinkedIn outreach,2023-09-20,+3 size: 800 employees: core mid-market/SMB sweet spot; +0 intent: source 'LinkedIn outreach'; +0 recency: 122 days since last touch: cold (older than 6 weeks); +1 industry: Logistics: adjacent vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: source 'LinkedIn outreach'. weak: 122 days since last touch: cold (older than 6 weeks).,,,
+,NONE,rejected,4,4-4,Uma Singh,Event Planning Co,35,Events,LinkedIn outreach,2024-01-08,+2 size: 35 employees: small but scaling team; +0 intent: source 'LinkedIn outreach'; +2 recency: 12 days since last touch: hot (within 2 weeks); +0 industry: Events: poor vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: source 'LinkedIn outreach'. weak: Events: poor vertical.,,,
+,NONE,rejected,4,4-4,Test_StartupShutdown,Failed Startup,8,SaaS,Referral,2023-05-01,+0 size: 8 employees: micro team (too small for a sales platform); +2 intent: source 'Referral'; +0 recency: 264 days since last touch: cold (older than 6 weeks); +2 industry: SaaS: core vertical = 4/10 -> REJECTED. score 4/10 at or below reject bar (5). weak: 8 employees: micro team (too small for a sales platform). weak: 264 days since last touch: cold (older than 6 weeks).,,,
+,NONE,rejected,3,3-3,Test_Solo,John Doe Consulting,1,Consulting,LinkedIn outreach,2024-01-20,+0 size: 1 employees: micro team (too small for a sales platform); +0 intent: source 'LinkedIn outreach'; +2 recency: 0 days since last touch: hot (within 2 weeks); +1 industry: Consulting: adjacent vertical = 3/10 -> REJECTED. score 3/10 at or below reject bar (5). weak: 1 employees: micro team (too small for a sales platform). weak: source 'LinkedIn outreach'.,,,
+,NONE,rejected,2,2-2,Olivia Garcia,Local Restaurant Group,12,Hospitality,LinkedIn outreach,2023-08-30,+2 size: 12 employees: small but scaling team; +0 intent: source 'LinkedIn outreach'; +0 recency: 143 days since last touch: cold (older than 6 weeks); +0 industry: Hospitality: poor vertical = 2/10 -> REJECTED. score 2/10 at or below reject bar (5). weak: source 'LinkedIn outreach'. weak: 143 days since last touch: cold (older than 6 weeks). weak: Hospitality: poor vertical.,,,
+,NONE,rejected,2,2-2,Test_LowValueNiche,Niche Small Op,5,Agriculture,LinkedIn outreach,2024-01-15,+0 size: 5 employees: micro team (too small for a sales platform); +0 intent: source 'LinkedIn outreach'; +2 recency: 5 days since last touch: hot (within 2 weeks); +0 industry: Agriculture: poor vertical = 2/10 -> REJECTED. score 2/10 at or below reject bar (5). weak: 5 employees: micro team (too small for a sales platform). weak: source 'LinkedIn outreach'. weak: Agriculture: poor vertical.,,,

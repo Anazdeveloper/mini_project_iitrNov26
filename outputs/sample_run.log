@@ -1,0 +1,21 @@
+2026-11-15 10:34:03,351 INFO    ingest: L030 (Test_MissingSize): data flags ['missing_company_size']
+2026-11-15 10:34:03,352 INFO    ingest: L035 (Test_MissingDate): data flags ['missing_source', 'missing_last_interaction_date']
+2026-11-15 10:34:03,352 INFO    ingest: L036 (Test_UnknownIndustry): data flags ['missing_industry']
+2026-11-15 10:34:03,352 INFO    ingest: L039 (Test_NoSourceInfo): data flags ['missing_source']
+2026-11-15 10:34:03,352 INFO    ingest: L042 (Test_MissingName): data flags ['missing_company']
+2026-11-15 10:34:03,352 INFO    ingest: L043 (Test_NameOnly): data flags ['missing_industry', 'missing_source', 'missing_company_size', 'missing_last_interaction_date']
+2026-11-15 10:34:03,352 INFO    ingest: L044 (Test_PartialData): data flags ['missing_source', 'missing_company_size']
+2026-11-15 10:34:03,352 INFO    ingest: Loaded 49 leads from leads.csv
+2026-11-15 10:34:03,353 INFO    lead_qualifier: Reference date for recency: 2024-01-20
+2026-11-15 10:34:04,225 INFO    lead_qualifier: 23 qualified leads need outreach messages
+2026-11-15 10:34:04,225 INFO    llm: Writing outreach for leads 1-10 of 23
+2026-11-15 10:34:13,231 INFO    httpx2: HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-4-hydrogen:generateContent "HTTP/1.1 200 OK"
+2026-11-15 10:34:13,268 INFO    llm: Gemini call ok in 9.0s
+2026-11-15 10:34:13,269 INFO    llm: Writing outreach for leads 11-20 of 23
+2026-11-15 10:34:31,536 INFO    httpx2: HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-4-hydrogen:generateContent "HTTP/1.1 200 OK"
+2026-11-15 10:34:31,543 INFO    llm: Gemini call ok in 11.3s
+2026-11-15 10:34:31,544 WARNING llm: L020: message does not name the company; using template instead
+2026-11-15 10:34:31,544 WARNING llm: L024: message does not name the company; using template instead
+2026-11-15 10:34:31,545 INFO    llm: Writing outreach for leads 21-23 of 23
+2026-11-15 10:34:45,799 INFO    httpx2: HTTP Request: POST https://generativelanguage.googleapis.com/v1/models/gemini-4-hydrogen:generateContent "HTTP/1.1 200 OK"
+2026-11-15 10:34:45,807 INFO    llm: Gemini call ok in 7.3s
